@@ -1,0 +1,30 @@
+[
+  {
+    "id": "tip_001",
+    "titleAr": "استخدم كلمات مرور قوية",
+    "titleEn": "Use Strong Passwords",
+    "contentAr": "اجعل كلمات مرورك طويلة ومعقدة، مكونة من أحرف كبيرة وصغيرة، أرقام، ورموز. تجنب استخدام معلومات شخصية سهلة التخمين.",
+    "contentEn": "Make your passwords long and complex, consisting of uppercase and lowercase letters, numbers, and symbols. Avoid using easily guessable personal information."
+  },
+  {
+    "id": "tip_002",
+    "titleAr": "تفعيل المصادقة الثنائية (2FA)",
+    "titleEn": "Enable Two-Factor Authentication (2FA)",
+    "contentAr": "أضف طبقة أمان إضافية لحساباتك عن طريق تفعيل المصادقة الثنائية. هذا يتطلب رمزًا إضافيًا بالإضافة إلى كلمة المرور.",
+    "contentEn": "Add an extra layer of security to your accounts by enabling two-factor authentication. This requires an additional code in addition to your password."
+  },
+  {
+    "id": "tip_003",
+    "titleAr": "احذر من رسائل التصيد الاحتيالي",
+    "titleEn": "Beware of Phishing Emails",
+    "contentAr": "لا تنقر على الروابط المشبوهة أو تفتح المرفقات من مصادر غير معروفة. تحقق دائمًا من هوية المرسل قبل اتخاذ أي إجراء.",
+    "contentEn": "Do not click on suspicious links or open attachments from unknown sources. Always verify the sender's identity before taking any action."
+  },
+  {
+    "id": "tip_004",
+    "titleAr": "حافظ على تحديث برامجك",
+    "titleEn": "Keep Your Software Updated",
+    "contentAr": "تأكد من تحديث نظام التشغيل والتطبيقات بانتظام لسد الثغرات الأمنية المعروفة وحماية جهازك من البرمجيات الخبيثة.",
+    "contentEn": "Ensure your operating system and applications are regularly updated to patch known security vulnerabilities and protect your device from malware."
+  }
+]
