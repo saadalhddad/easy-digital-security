@@ -1,96 +1,68 @@
-import 'dart:async';
 import 'dart:convert';
+import 'package:easy_digital_security/screens/learn_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:http/http.dart' as http;
-import 'package:retry/retry.dart';
 import '../models/tip_model.dart';
 import '../models/quiz_model.dart';
+import '../models/article_model.dart';
 import '../services/local_storage.dart';
 import '../utils/constants.dart';
 import '../utils/helpers.dart' as helpers;
-import 'package:easy_localization/easy_localization.dart';
 
 class ContentService {
   final LocalStorageService localStorageService;
-  static const int _maxRetries = 3;
-  static const Duration _retryDelay = Duration(seconds: 2);
 
   ContentService(this.localStorageService);
 
-  /// Loads initial content (tips and quizzes) from assets or local storage, falling back to defaults if needed.
   Future<void> loadInitialContent() async {
     try {
-      // Load tips
       final tipsData = await compute(loadJsonAssetIsolate, AssetPaths.tipsJson);
       List<TipModel> tips;
-      if (tipsData.isNotEmpty && _validateTips(tipsData)) {
+      if (tipsData.isNotEmpty) {
         tips = tipsData.map((json) => TipModel.fromJson(json)).toList();
       } else {
-        debugPrint('No valid tips found in ${AssetPaths.tipsJson}, loading default tips');
+        debugPrint('No tips found in ${AssetPaths.tipsJson}, loading default tips');
         tips = await getDefaultTips();
       }
       await localStorageService.addTips(tips);
       debugPrint('Tips loaded and stored in Hive: ${tips.length} tips');
 
-      // Load quizzes
       final quizzesData = await compute(loadJsonAssetIsolate, AssetPaths.quizzesJson);
       List<QuizModel> quizzes;
-      if (quizzesData.isNotEmpty && _validateQuizzes(quizzesData)) {
+      if (quizzesData.isNotEmpty) {
         quizzes = quizzesData.map((json) => QuizModel.fromJson(json)).toList();
       } else {
-        debugPrint('No valid quizzes found in ${AssetPaths.quizzesJson}, loading default quizzes');
+        debugPrint('No quizzes found in ${AssetPaths.quizzesJson}, loading default quizzes');
         quizzes = await getDefaultQuizzes();
       }
       await localStorageService.addQuizzes(quizzes);
       debugPrint('Quizzes loaded and stored in Hive: ${quizzes.length} quizzes');
 
-      // Log content load success for analytics
-      _logEvent('content_load_success', {'tips_count': tips.length, 'quizzes_count': quizzes.length});
+      final articlesData = await compute(loadJsonAssetIsolate, AssetPaths.articlesJson);
+      List<Article> articles;
+      if (articlesData.isNotEmpty) {
+        articles = articlesData.map((json) => Article.fromJson(json)).toList();
+      } else {
+        debugPrint('No articles found in ${AssetPaths.articlesJson}, loading default articles');
+        articles = await getDefaultArticles();
+      }
+      await localStorageService.addArticles(articles);
+      debugPrint('Articles loaded and stored in Hive: ${articles.length} articles');
     } catch (e) {
       debugPrint('Error loading initial content: $e');
-      _logEvent('content_load_failure', {'error': e.toString()});
-      // Notify user of failure (can be shown in UI)
-      throw Exception('Failed to load initial content: $e'.tr());
+      throw Exception('Failed to load initial content: $e');
     }
   }
 
-  /// Validates tip data to ensure required fields are present.
-  bool _validateTips(List<dynamic> tipsData) {
-    return tipsData.every((json) =>
-    json['id'] != null &&
-        json['titleEn'] != null &&
-        json['titleAr'] != null &&
-        json['contentEn'] != null &&
-        json['contentAr'] != null &&
-        json['category'] != null);
-  }
-
-  /// Validates quiz data to ensure required fields are present.
-  bool _validateQuizzes(List<dynamic> quizzesData) {
-    return quizzesData.every((json) =>
-    json['id'] != null &&
-        json['titleEn'] != null &&
-        json['titleAr'] != null &&
-        json['questions'] != null &&
-        (json['questions'] as List).every((q) =>
-        q['id'] != null &&
-            q['questionEn'] != null &&
-            q['questionAr'] != null &&
-            q['correctAnswerId'] != null &&
-            q['answers'] != null &&
-            (q['answers'] as List).every((a) => a['id'] != null && a['textEn'] != null && a['textAr'] != null)));
-  }
-
-  /// Provides default tips if asset or network loading fails.
   Future<List<TipModel>> getDefaultTips() async {
     return [
       TipModel(
         id: 'default_tip1',
         titleEn: 'Use Strong Passwords',
         titleAr: 'استخدم كلمات مرور قوية',
-        contentEn: 'Create passwords with at least 12 characters, including letters, numbers, and symbols.',
-        contentAr: 'أنشئ كلمات مرور تحتوي على 12 حرفًا على الأقل، تتضمن حروفًا وأرقامًا ورموزًا.',
+        contentEn: 'Create passwords with at least 12 characters, including numbers, letters, and symbols.',
+        contentAr: 'أنشئ كلمات مرور تحتوي على 12 حرفًا على الأقل، بما في ذلك أرقام وحروف ورموز.',
         imageUrl: '',
         category: 'Passwords',
       ),
@@ -98,15 +70,14 @@ class ContentService {
         id: 'default_tip2',
         titleEn: 'Enable Two-Factor Authentication',
         titleAr: 'تفعيل المصادقة الثنائية',
-        contentEn: 'Add an extra layer of security with 2FA to protect your accounts.',
-        contentAr: 'أضف طبقة إضافية من الأمان بتفعيل المصادقة الثنائية لحماية حساباتك.',
+        contentEn: 'Add an extra layer of security with 2FA on all your accounts.',
+        contentAr: 'أضف طبقة إضافية من الأمان بتفعيل المصادقة الثنائية على جميع حساباتك.',
         imageUrl: '',
         category: 'Authentication',
       ),
     ];
   }
 
-  /// Provides default quizzes if asset or network loading fails.
   Future<List<QuizModel>> getDefaultQuizzes() async {
     return [
       QuizModel(
@@ -125,155 +96,128 @@ class ContentService {
               AnswerModel(id: 'a4', textEn: '10 characters', textAr: '10 أحرف', isCorrect: false),
             ],
             correctAnswerId: 'a2',
-            explanation: 'A strong password should be at least 12 characters long to resist brute-force attacks.',
-            explanationAr: 'يجب أن تكون كلمة المرور القوية مكونة من 12 حرفًا على الأقل لمقاومة هجمات القوة الغاشمة.',
+            explanation: 'A strong password should be at least 12 characters long.',
+            explanationAr: 'يجب أن تكون كلمة المرور القوية مكونة من 12 حرفًا على الأقل.',
           ),
         ],
       ),
     ];
   }
 
-  /// Retrieves all quizzes from local storage, initializing the box if needed.
-  Future<List<QuizModel>> getAllQuizzes() async {
-    try {
-      await localStorageService.initQuizzesBox();
-      final quizzes = localStorageService.getAllQuizzes();
-      if (quizzes.isEmpty) {
-        debugPrint('No quizzes in local storage, loading defaults');
-        final defaultQuizzes = await getDefaultQuizzes();
-        await localStorageService.addQuizzes(defaultQuizzes);
-        return defaultQuizzes;
-      }
-      return quizzes;
-    } catch (e) {
-      debugPrint('Error retrieving quizzes: $e');
-      _logEvent('quiz_retrieval_failure', {'error': e.toString()});
-      throw Exception('Failed to retrieve quizzes: $e'.tr());
-    }
+  Future<List<Article>> getDefaultArticles() async {
+    return [
+      Article(
+        id: 'default_article1',
+        fileName: 'password_security.md',
+        titleEn: 'Password Security Basics',
+        titleAr: 'أساسيات أمان كلمة المرور',
+        category: 'Passwords',
+      ),
+      Article(
+        id: 'default_article2',
+        fileName: 'two_factor_authentication.md',
+        titleEn: 'Understanding Two-Factor Authentication',
+        titleAr: 'فهم المصادقة الثنائية',
+        category: 'Authentication',
+      ),
+    ];
   }
 
-  /// Retrieves all tips from local storage, initializing the box if needed.
   Future<List<TipModel>> getAllTips() async {
     try {
-      await localStorageService.initTipsBox();
-      final tips = localStorageService.getAllTips();
-      if (tips.isEmpty) {
-        debugPrint('No tips in local storage, loading defaults');
-        final defaultTips = await getDefaultTips();
-        await localStorageService.addTips(defaultTips);
-        return defaultTips;
-      }
-      return tips;
+      return localStorageService.getAllTips();
     } catch (e) {
       debugPrint('Error retrieving tips: $e');
-      _logEvent('tip_retrieval_failure', {'error': e.toString()});
-      throw Exception('Failed to retrieve tips: $e'.tr());
+      throw Exception('Failed to retrieve tips: $e');
     }
   }
 
-  /// Loads article content from assets or local storage.
+  Future<List<QuizModel>> getAllQuizzes() async {
+    try {
+      return localStorageService.getAllQuizzes();
+    } catch (e) {
+      debugPrint('Error retrieving quizzes: $e');
+      throw Exception('Failed to retrieve quizzes: $e');
+    }
+  }
+
+  Future<List<Article>> getAllArticles() async {
+    try {
+      return localStorageService.getAllArticles();
+    } catch (e) {
+      debugPrint('Error retrieving articles: $e');
+      throw Exception('Failed to retrieve articles: $e');
+    }
+  }
+
   Future<String> getArticleContent(String fileName, String languageCode) async {
     try {
       final path = 'assets/content/articles/$languageCode/$fileName';
       final content = await helpers.CustomAssetLoader.getAsset(path);
       if (content == null || content.isEmpty) {
         debugPrint('Article $fileName not found for language $languageCode');
-        return '';
+        throw Exception('Article content not found for $fileName');
       }
       return content;
     } catch (e) {
       debugPrint('Error loading article $fileName: $e');
-      _logEvent('article_load_failure', {'fileName': fileName, 'error': e.toString()});
-      return '';
+      throw Exception('Failed to load article content: $e');
     }
   }
 
-  /// Syncs content from GitHub with retry mechanism and falls back to local storage.
   Future<void> syncContentFromGitHub() async {
-    const retryOptions = RetryOptions(
-      maxAttempts: _maxRetries,
-      delayFactor: _retryDelay,
-      randomizationFactor: 0.5,
-    );
-
     try {
       // Sync tips
-      final tipsResponse = await retryOptions.retry(
-            () => http.get(Uri.parse(
-            'https://github.com/saadalhddad/easy-digital-security.git/main/assets/content/tips.json')),
-        retryIf: (e) => e is http.ClientException || e is TimeoutException,
-      );
+      final tipsResponse = await http.get(Uri.parse('${GitHubPaths.contentBaseUrl}/tips.json'));
       if (tipsResponse.statusCode == 200) {
         final tipsData = json.decode(tipsResponse.body) as List;
-        if (tipsData.isNotEmpty && _validateTips(tipsData)) {
+        if (tipsData.isNotEmpty) {
           final tips = tipsData.map((json) => TipModel.fromJson(json)).toList();
           await localStorageService.addTips(tips);
           debugPrint('Tips synced from GitHub: ${tips.length} tips');
-          _logEvent('tips_sync_success', {'count': tips.length});
         } else {
-          debugPrint('No valid tips found in GitHub response');
-          _logEvent('tips_sync_empty', {});
+          debugPrint('No tips found in GitHub response');
         }
       } else {
         debugPrint('Failed to sync tips from GitHub: ${tipsResponse.statusCode}');
-        _logEvent('tips_sync_failure', {'statusCode': tipsResponse.statusCode});
+        throw Exception('Failed to sync tips: ${tipsResponse.statusCode}');
       }
 
       // Sync quizzes
-      final quizzesResponse = await retryOptions.retry(
-            () => http.get(Uri.parse(
-            'https://github.com/saadalhddad/easy-digital-security.git/main/assets/content/quizzes.json')),
-        retryIf: (e) => e is http.ClientException || e is TimeoutException,
-      );
+      final quizzesResponse = await http.get(Uri.parse('${GitHubPaths.contentBaseUrl}/quizzes.json'));
       if (quizzesResponse.statusCode == 200) {
         final quizzesData = json.decode(quizzesResponse.body) as List;
-        if (quizzesData.isNotEmpty && _validateQuizzes(quizzesData)) {
+        if (quizzesData.isNotEmpty) {
           final quizzes = quizzesData.map((json) => QuizModel.fromJson(json)).toList();
           await localStorageService.addQuizzes(quizzes);
           debugPrint('Quizzes synced from GitHub: ${quizzes.length} quizzes');
-          _logEvent('quizzes_sync_success', {'count': quizzes.length});
         } else {
-          debugPrint('No valid quizzes found in GitHub response');
-          _logEvent('quizzes_sync_empty', {});
+          debugPrint('No quizzes found in GitHub response');
         }
       } else {
         debugPrint('Failed to sync quizzes from GitHub: ${quizzesResponse.statusCode}');
-        _logEvent('quizzes_sync_failure', {'statusCode': quizzesResponse.statusCode});
+        throw Exception('Failed to sync quizzes: ${quizzesResponse.statusCode}');
       }
 
       // Sync articles
-      final articlesResponse = await retryOptions.retry(
-            () => http.get(Uri.parse(
-            'https://raw.githubusercontent.com/your_repo/easy_digital_security/main/assets/content/articles.json')),
-        retryIf: (e) => e is http.ClientException || e is TimeoutException,
-      );
+      final articlesResponse = await http.get(Uri.parse('${GitHubPaths.contentBaseUrl}/articles.json'));
       if (articlesResponse.statusCode == 200) {
         final articlesData = json.decode(articlesResponse.body) as List;
         if (articlesData.isNotEmpty) {
-          debugPrint('Articles synced from GitHub: ${articlesData.length} articles');
-          _logEvent('articles_sync_success', {'count': articlesData.length});
-          // Process articles (e.g., save to local storage or cache)
-          // await localStorageService.addArticles(articlesData); // Placeholder for article storage
+          final articles = articlesData.map((json) => Article.fromJson(json)).toList();
+          await localStorageService.addArticles(articles);
+          debugPrint('Articles synced from GitHub: ${articles.length} articles');
         } else {
           debugPrint('No articles found in GitHub response');
-          _logEvent('articles_sync_empty', {});
         }
       } else {
         debugPrint('Failed to sync articles from GitHub: ${articlesResponse.statusCode}');
-        _logEvent('articles_sync_failure', {'statusCode': articlesResponse.statusCode});
+        throw Exception('Failed to sync articles: ${articlesResponse.statusCode}');
       }
     } catch (e) {
       debugPrint('Error syncing content from GitHub: $e');
-      _logEvent('content_sync_failure', {'error': e.toString()});
-      throw Exception('Failed to sync content: $e'.tr());
+      throw Exception('Failed to sync content from GitHub: $e');
     }
-  }
-
-  /// Logs events for debugging and analytics (placeholder for future telemetry integration).
-  void _logEvent(String eventName, Map<String, dynamic> properties) {
-    debugPrint('Event: $eventName, Properties: $properties');
-    // Placeholder for analytics service (e.g., Firebase Analytics)
-    // analyticsService.logEvent(eventName, properties);
   }
 }
 
@@ -287,6 +231,6 @@ Future<List<dynamic>> loadJsonAssetIsolate(String path) async {
     return json.decode(jsonString) as List<dynamic>;
   } catch (e) {
     debugPrint('Error loading JSON from $path: $e');
-    return [];
+    throw Exception('Failed to load JSON asset: $e');
   }
 }

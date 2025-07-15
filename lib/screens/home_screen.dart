@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
@@ -26,39 +25,51 @@ class _HomeScreenState extends State<HomeScreen> {
   List<TipModel> _tips = [];
   int _currentIndex = 0;
   int _currentTipIndex = 0;
-  Timer? _tipRotationTimer;
+  double _quizProgress = 0.0;
+  int _completedQuizzes = 0;
+  int _totalQuizzes = 0;
 
   @override
   void initState() {
     super.initState();
-    _loadTips();
-    _startTipRotation();
+    _loadContent();
   }
 
-  @override
-  void dispose() {
-    _tipRotationTimer?.cancel();
-    super.dispose();
-  }
+  Future<void> _loadContent() async {
+    try {
+      // Sync content from GitHub
+      await contentService!.syncContentFromGitHub();
+      final tips = await contentService!.getAllTips();
+      final quizzes = await contentService!.getAllQuizzes();
+      final quizResults = localStorageService.getQuizResults();
 
-  Future<void> _loadTips() async {
-    final tips = await localStorageService.getAllTips();
-    setState(() {
-      _tips = tips;
-      _tips.shuffle();
-    });
-  }
+      // Calculate quiz progress
+      int completed = quizResults.length;
+      double progress = quizzes.isNotEmpty ? completed / quizzes.length : 0.0;
 
-  void _startTipRotation() {
-    _tipRotationTimer = Timer.periodic(const Duration(minutes: 3), (timer) {
-      if (_tips.isNotEmpty) {
-        setState(() {
-          _currentTipIndex = (_currentTipIndex + 1) % _tips.length;
-        });
-        // Optional: Play tip refresh sound (placeholder for audioplayers)
-        // await audioPlayer.play(AssetSource('sounds/tip_refresh.mp3'));
+      setState(() {
+        _tips = tips;
+        _tips.shuffle();
+        _totalQuizzes = quizzes.length;
+        _completedQuizzes = completed;
+        _quizProgress = progress.clamp(0.0, 1.0);
+      });
+
+      // Schedule daily tip notification
+      if (notificationService != null && _tips.isNotEmpty) {
+        final dailyTip = _tips[_currentTipIndex];
+        await notificationService!.scheduleDailyTipNotification(
+          context, // تمرير BuildContext
+          context.locale.languageCode == 'ar' ? dailyTip.titleAr : dailyTip.titleEn,
+          context.locale.languageCode == 'ar' ? dailyTip.contentAr : dailyTip.contentEn,
+        );
       }
-    });
+    } catch (e) {
+      debugPrint('Error loading content or scheduling notification: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error loading content: $e'.tr())),
+      );
+    }
   }
 
   void _loadNewTip() {
@@ -66,8 +77,22 @@ class _HomeScreenState extends State<HomeScreen> {
       _tips.shuffle();
       _currentTipIndex = 0;
     });
-    // Optional: Play tip refresh sound
-    // await audioPlayer.play(AssetSource('sounds/tip_refresh.mp3'));
+    // Schedule notification for new tip
+    if (notificationService != null && _tips.isNotEmpty) {
+      final dailyTip = _tips[_currentTipIndex];
+      try {
+        notificationService!.scheduleDailyTipNotification(
+          context, // تمرير BuildContext
+          context.locale.languageCode == 'ar' ? dailyTip.titleAr : dailyTip.titleEn,
+          context.locale.languageCode == 'ar' ? dailyTip.contentAr : dailyTip.contentEn,
+        );
+      } catch (e) {
+        debugPrint('Error scheduling new tip notification: $e');
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error scheduling new tip: $e'.tr())),
+        );
+      }
+    }
   }
 
   void _onNavTapped(int index) {
@@ -246,22 +271,22 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     Expanded(
                       child: ProgressBar(
-                        progress: 0.25,
+                        progress: _quizProgress,
                         progressColor: Theme.of(context).colorScheme.primary,
                         backgroundColor: Theme.of(context).colorScheme.primary.withOpacity(0.2),
                         height: 16,
-                        label: '5 of 20 Tips Completed'.tr(),
+                        label: '$_completedQuizzes of $_totalQuizzes Quizzes Completed'.tr(args: [_completedQuizzes.toString(), _totalQuizzes.toString()]),
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
                     const SizedBox(width: 12),
                     Row(
                       children: [
-                        Icon(Icons.star, color: Colors.amber, size: 20),
+                        Icon(Icons.star, color: _quizProgress >= 0.3 ? Colors.amber : Colors.grey.shade300, size: 20),
                         const SizedBox(width: 6),
-                        Icon(Icons.star, color: Colors.grey.shade300, size: 20),
+                        Icon(Icons.star, color: _quizProgress >= 0.6 ? Colors.amber : Colors.grey.shade300, size: 20),
                         const SizedBox(width: 6),
-                        Icon(Icons.star, color: Colors.grey.shade300, size: 20),
+                        Icon(Icons.star, color: _quizProgress >= 0.9 ? Colors.amber : Colors.grey.shade300, size: 20),
                       ],
                     ),
                   ],

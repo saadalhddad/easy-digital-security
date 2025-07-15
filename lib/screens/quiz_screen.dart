@@ -37,13 +37,18 @@ class _QuizScreenState extends State<QuizScreen> {
   }
 
   Future<void> _loadQuizzes() async {
-    _quizzes = await contentService!.getAllQuizzes();
-    if (_quizzes.isNotEmpty) {
+    try {
+      await contentService!.syncContentFromGitHub();
+      final quizzes = await contentService!.getAllQuizzes();
       setState(() {
-        _currentQuiz = _quizzes.first;
+        _quizzes = quizzes;
+        _currentQuiz = quizzes.isNotEmpty ? quizzes.first : null;
       });
-    } else {
-      debugPrint('No quizzes loaded.');
+    } catch (e) {
+      debugPrint('Error loading quizzes: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error loading quizzes: $e'.tr())),
+      );
     }
   }
 
@@ -62,8 +67,6 @@ class _QuizScreenState extends State<QuizScreen> {
       _selectedAnswerIndex = null;
       _showAnswerFeedback = false;
     });
-    // Optional: Play start quiz sound (placeholder for audioplayers)
-    // await audioPlayer.play(AssetSource('sounds/quiz_start.mp3'));
   }
 
   void _checkAnswer() {
@@ -73,11 +76,6 @@ class _QuizScreenState extends State<QuizScreen> {
         if (_currentQuiz!.questions[_currentQuestionIndex].answers[_selectedAnswerIndex!].id ==
             _currentQuiz!.questions[_currentQuestionIndex].correctAnswerId) {
           _score++;
-          // Optional: Play correct answer sound
-          // await audioPlayer.play(AssetSource('sounds/correct.mp3'));
-        } else {
-          // Optional: Play incorrect answer sound
-          // await audioPlayer.play(AssetSource('sounds/incorrect.mp3'));
         }
       });
     } else {
@@ -95,11 +93,29 @@ class _QuizScreenState extends State<QuizScreen> {
         _currentQuestionIndex++;
       } else {
         _quizCompleted = true;
-        localStorageService.saveQuizResult(
-          _currentQuiz!.id,
-          _score,
-          _currentQuiz!.questions.length,
-        );
+        try {
+          localStorageService.saveQuizResult(
+            _currentQuiz!.id,
+            _score,
+            _currentQuiz!.questions.length,
+          );
+          if (notificationService != null) {
+            notificationService!.scheduleQuizCompletionNotification(
+              context, // تمرير BuildContext
+              _score,
+              _currentQuiz!.questions.length,
+              context.locale.languageCode == 'ar' ? _currentQuiz!.titleAr : _currentQuiz!.titleEn,
+            );
+          }
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Quiz completed! Score: $_score/${_currentQuiz!.questions.length}'.tr())),
+          );
+        } catch (e) {
+          debugPrint('Error saving quiz result or scheduling notification: $e');
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Error completing quiz: $e'.tr())),
+          );
+        }
       }
     });
   }
@@ -144,7 +160,7 @@ class _QuizScreenState extends State<QuizScreen> {
       textDirection: isArabic ? ui.TextDirection.rtl : ui.TextDirection.ltr,
       child: Scaffold(
         appBar: AppBar(
-          title: Text('🧠 Security Quiz'.tr()),
+          title: Text('Quiz'.tr()),
           centerTitle: true,
           backgroundColor: Theme.of(context).appBarTheme.backgroundColor?.withOpacity(0.8) ?? Colors.transparent,
           foregroundColor: Theme.of(context).appBarTheme.foregroundColor,

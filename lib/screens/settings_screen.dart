@@ -10,7 +10,7 @@ import 'package:easy_digital_security/screens/tools_screen.dart';
 import 'package:easy_digital_security/services/notification_service.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:provider/provider.dart'; // Assuming Provider for theme management
+import 'package:provider/provider.dart';
 
 class ThemeController extends ChangeNotifier {
   bool _isDarkMode = false;
@@ -43,111 +43,129 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   Future<void> _loadSettings() async {
-    final notificationsEnabled = localStorageService.getSetting('dailyNotifications', defaultValue: false);
-    final fontSize = localStorageService.getSetting('fontSize', defaultValue: 16.0);
-    final notificationTime = localStorageService.getSetting('notificationTime', defaultValue: '09:00');
-    setState(() {
-      _dailyNotifications = notificationsEnabled;
-      _fontSize = fontSize;
-      _notificationTime = TimeOfDay(
-        hour: int.parse(notificationTime.split(':')[0]),
-        minute: int.parse(notificationTime.split(':')[1]),
+    try {
+      final notificationsEnabled = localStorageService.getSetting('dailyNotifications', defaultValue: false);
+      final fontSize = localStorageService.getSetting('fontSize', defaultValue: 16.0);
+      final notificationTime = localStorageService.getSetting('notificationTime', defaultValue: '09:00');
+      setState(() {
+        _dailyNotifications = notificationsEnabled;
+        _fontSize = fontSize;
+        _notificationTime = TimeOfDay(
+          hour: int.parse(notificationTime.split(':')[0]),
+          minute: int.parse(notificationTime.split(':')[1]),
+        );
+      });
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error loading settings: $e'.tr())),
       );
-    });
+    }
   }
 
   Future<void> _toggleNotifications(bool value) async {
-    setState(() {
-      _dailyNotifications = value;
-    });
-    await localStorageService.saveSetting('dailyNotifications', value);
-    if (notificationService == null) {
+    try {
+      setState(() {
+        _dailyNotifications = value;
+      });
+      await localStorageService.saveSetting('dailyNotifications', value);
+      if (notificationService == null) {
+        throw Exception('Notification service not initialized');
+      }
+      if (value) {
+        await notificationService!.scheduleDailyNotification(context, _notificationTime); // تمرير BuildContext
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Daily notifications enabled.'.tr())),
+        );
+      } else {
+        await notificationService!.cancelNotifications();
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Daily notifications disabled.'.tr())),
+        );
+      }
+    } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Notification service not initialized.'.tr())),
+        SnackBar(content: Text('Error toggling notifications: $e'.tr())),
       );
-      return;
-    }
-    if (value) {
-      await notificationService!.scheduleDailyNotification(_notificationTime);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Daily notifications enabled.'.tr())),
-      );
-    } else {
-      await notificationService!.cancelNotifications();
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Daily notifications disabled.'.tr())),
-      );
+      setState(() {
+        _dailyNotifications = !value; // Revert on error
+      });
     }
   }
 
   Future<void> _selectNotificationTime() async {
-    final TimeOfDay? picked = await showTimePicker(
-      context: context,
-      initialTime: _notificationTime,
-      builder: (context, child) {
-        return Theme(
-          data: Theme.of(context).copyWith(
-            colorScheme: Theme.of(context).colorScheme.copyWith(
-              primary: Theme.of(context).colorScheme.primary,
-              onPrimary: Theme.of(context).colorScheme.onPrimary,
-              surface: Theme.of(context).colorScheme.surface,
-              onSurface: Theme.of(context).colorScheme.onSurface,
+    try {
+      final TimeOfDay? picked = await showTimePicker(
+        context: context,
+        initialTime: _notificationTime,
+        builder: (context, child) {
+          return Theme(
+            data: Theme.of(context).copyWith(
+              colorScheme: Theme.of(context).colorScheme.copyWith(
+                primary: Theme.of(context).colorScheme.primary,
+                onPrimary: Theme.of(context).colorScheme.onPrimary,
+                surface: Theme.of(context).colorScheme.surface,
+                onSurface: Theme.of(context).colorScheme.onSurface,
+              ),
             ),
-          ),
-          child: child!,
-        );
-      },
-    );
-    if (picked != null && picked != _notificationTime) {
-      setState(() {
-        _notificationTime = picked;
-      });
-      await localStorageService.saveSetting('notificationTime', '${picked.hour}:${picked.minute}');
-      if (_dailyNotifications && notificationService != null) {
-        await notificationService!.scheduleDailyNotification(picked);
+            child: child!,
+          );
+        },
+      );
+      if (picked != null && picked != _notificationTime) {
+        setState(() {
+          _notificationTime = picked;
+        });
+        await localStorageService.saveSetting('notificationTime', '${picked.hour}:${picked.minute}');
+        if (_dailyNotifications && notificationService != null) {
+          await notificationService!.scheduleDailyNotification(context, picked); // تمرير BuildContext
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Notification time updated.'.tr())),
+          );
+        }
       }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error selecting notification time: $e'.tr())),
+      );
     }
   }
 
   Future<void> _changeLanguage(String languageCode) async {
-    await context.setLocale(Locale(languageCode));
-    setState(() {});
+    try {
+      await context.setLocale(Locale(languageCode));
+      setState(() {});
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Language changed to ${languageCode == 'ar' ? 'العربية' : 'English'}'.tr())),
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error changing language: $e'.tr())),
+      );
+    }
   }
 
   Future<void> _launchURL(String url) async {
-    final Uri uri = Uri.parse(url);
-    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+    try {
+      final Uri uri = Uri.parse(url);
+      if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Could not launch $url'.tr())),
+        );
+      }
+    } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Could not launch $url'.tr())),
+        SnackBar(content: Text('Error launching URL: $e'.tr())),
       );
     }
   }
 
   Future<void> _resetAppSettings() async {
-    final confirmed = await showDialog<bool>(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text('Confirm Reset'.tr()),
-        content: Text('This will reset all settings and data. Are you sure?'.tr()),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context, false),
-            child: Text('Cancel'.tr()),
-          ),
-          TextButton(
-            onPressed: () => Navigator.pop(context, true),
-            child: Text('Reset'.tr(), style: TextStyle(color: Theme.of(context).colorScheme.error)),
-          ),
-        ],
-      ),
-    );
-
-    if (confirmed == true) {
-      final finalConfirmed = await showDialog<bool>(
+    try {
+      final confirmed = await showDialog<bool>(
         context: context,
         builder: (context) => AlertDialog(
-          title: Text('Final Confirmation'.tr()),
-          content: Text('This action cannot be undone. Proceed?'.tr()),
+          title: Text('Confirm Reset'.tr()),
+          content: Text('This will reset all settings and data. Are you sure?'.tr()),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context, false),
@@ -161,20 +179,45 @@ class _SettingsScreenState extends State<SettingsScreen> {
         ),
       );
 
-      if (finalConfirmed == true) {
-        await localStorageService.resetData();
-        if (notificationService != null) {
-          await notificationService!.cancelNotifications();
-        }
-        setState(() {
-          _dailyNotifications = false;
-          _fontSize = 16.0;
-          _notificationTime = const TimeOfDay(hour: 9, minute: 0);
-        });
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('App settings reset successfully.'.tr())),
+      if (confirmed == true) {
+        final finalConfirmed = await showDialog<bool>(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Text('Final Confirmation'.tr()),
+            content: Text('This action cannot be undone. Proceed?'.tr()),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context, false),
+                child: Text('Cancel'.tr()),
+              ),
+              TextButton(
+                onPressed: () => Navigator.pop(context, true),
+                child: Text('Reset'.tr(), style: TextStyle(color: Theme.of(context).colorScheme.error)),
+              ),
+            ],
+          ),
         );
+
+        if (finalConfirmed == true) {
+          await localStorageService.resetData();
+          if (notificationService != null) {
+            await notificationService!.cancelNotifications();
+          }
+          setState(() {
+            _dailyNotifications = false;
+            _fontSize = 16.0;
+            _notificationTime = const TimeOfDay(hour: 9, minute: 0);
+            Provider.of<ThemeController>(context, listen: false).toggleDarkMode(false);
+          });
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('App settings reset successfully.'.tr())),
+          );
+        }
       }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error resetting settings: $e'.tr())),
+      );
     }
   }
 
@@ -203,7 +246,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     final isArabic = context.locale.languageCode == 'ar';
-    final themeController = Provider.of<ThemeController>(context); // Assuming ThemeController is provided
+    final themeController = Provider.of<ThemeController>(context);
 
     return Directionality(
       textDirection: isArabic ? ui.TextDirection.rtl : ui.TextDirection.ltr,
@@ -240,7 +283,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         ),
         body: ListView.separated(
           padding: const EdgeInsets.all(16.0),
-          itemCount: 8,
+          itemCount: 10,
           separatorBuilder: (context, index) => const SizedBox(height: 8),
           itemBuilder: (context, index) {
             switch (index) {
@@ -326,34 +369,45 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 return FadeInUp(
                   duration: const Duration(milliseconds: 600),
                   child: Text(
-                    'About'.tr(),
+                    'Language'.tr(),
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
                   ),
                 );
               case 7:
                 return FadeInUp(
                   duration: const Duration(milliseconds: 600),
+                  child: ListTile(
+                    title: Text('Select Language'.tr(), style: Theme.of(context).textTheme.bodyLarge),
+                    leading: Icon(Icons.language, color: Theme.of(context).colorScheme.onSurfaceVariant),
+                    trailing: DropdownButton<String>(
+                      value: context.locale.languageCode,
+                      items: [
+                        DropdownMenuItem(value: 'en', child: Text('English')),
+                        DropdownMenuItem(value: 'ar', child: Text('العربية')),
+                      ],
+                      onChanged: (value) {
+                        if (value != null) {
+                          _changeLanguage(value);
+                        }
+                      },
+                      style: Theme.of(context).textTheme.bodyLarge,
+                      underline: const SizedBox(),
+                    ),
+                  ),
+                );
+              case 8:
+                return FadeInUp(
+                  duration: const Duration(milliseconds: 600),
+                  child: Text(
+                    'About'.tr(),
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
+                  ),
+                );
+              case 9:
+                return FadeInUp(
+                  duration: const Duration(milliseconds: 600),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      ListTile(
-                        title: Text('Select Language'.tr(), style: Theme.of(context).textTheme.bodyLarge),
-                        leading: Icon(Icons.language, color: Theme.of(context).colorScheme.onSurfaceVariant),
-                        trailing: DropdownButton<String>(
-                          value: context.locale.languageCode,
-                          items: [
-                            DropdownMenuItem(value: 'en', child: Text('English')),
-                            DropdownMenuItem(value: 'ar', child: Text('العربية')),
-                          ],
-                          onChanged: (value) {
-                            if (value != null) {
-                              _changeLanguage(value);
-                            }
-                          },
-                          style: Theme.of(context).textTheme.bodyLarge,
-                          underline: const SizedBox(),
-                        ),
-                      ),
                       ListTile(
                         title: Text('Refresh Content'.tr(), style: Theme.of(context).textTheme.bodyLarge),
                         leading: Icon(Icons.refresh, color: Theme.of(context).colorScheme.onSurfaceVariant),
@@ -380,23 +434,24 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             applicationVersion: '1.0.0',
                             applicationIcon: const Icon(Icons.security, size: 40),
                             children: [
-                              Text('A tool to enhance your digital security knowledge and practices.'.tr()),
+                              Text(
+                                'A tool to enhance your digital security knowledge with tips, quizzes, and tools. Visit our GitHub for more information.'
+                                    .tr(),
+                              ),
                               const SizedBox(height: 8),
                               TextButton(
                                 onPressed: () => _launchURL('https://github.com/your_repo/easy_digital_security'),
-                                child: Text('View on GitHub'.tr(), style: TextStyle(color: Theme.of(context).colorScheme.primary)),
+                                child: Text(
+                                  'View on GitHub'.tr(),
+                                  style: TextStyle(color: Theme.of(context).colorScheme.primary),
+                                ),
                               ),
                             ],
                           );
                         },
                       ),
                       ListTile(
-                        title: Text('Privacy Policy'.tr(), style: Theme.of(context).textTheme.bodyLarge),
-                        leading: Icon(Icons.privacy_tip, color: Theme.of(context).colorScheme.onSurfaceVariant),
-                        onTap: () => _launchURL('https://your_app.com/privacy.html'),
-                      ),
-                      ListTile(
-                        title: Text('Reset App Settings'.tr(), style: Theme.of(context).textTheme.bodyLarge),
+                        title: Text('Reset App'.tr(), style: TextStyle(color: Theme.of(context).colorScheme.error)),
                         leading: Icon(Icons.restore, color: Theme.of(context).colorScheme.error),
                         onTap: _resetAppSettings,
                       ),
@@ -443,3 +498,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 }
+
+// ... (باقي الكود كما هو)
+// داخل _SettingsScreenState
+
+// ... (باقي الكود كما هو)

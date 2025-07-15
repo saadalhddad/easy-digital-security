@@ -4,7 +4,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:zxcvbn/zxcvbn.dart';
 
 class PasswordStrengthChecker extends StatefulWidget {
-  const PasswordStrengthChecker({super.key});
+  const PasswordStrengthChecker({super.key, required Future<Null> Function(dynamic result) onCheck});
 
   @override
   State<PasswordStrengthChecker> createState() => _PasswordStrengthCheckerState();

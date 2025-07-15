@@ -214,3 +214,8 @@ class AppThemes {
 class NavigationService {
   static final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 }
+
+class GitHubPaths {
+  static const String contentBaseUrl =
+      'https://raw.githubusercontent.com/your_repo/easy_digital_security/main/assets/content';
+}

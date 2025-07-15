@@ -1,14 +1,30 @@
-import 'dart:math';
 import 'dart:ui' as ui;
+
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:easy_digital_security/main.dart';
 import 'package:easy_digital_security/screens/home_screen.dart';
 import 'package:easy_digital_security/screens/learn_screen.dart';
 import 'package:easy_digital_security/screens/quiz_screen.dart';
 import 'package:easy_digital_security/screens/settings_screen.dart';
 import 'package:easy_digital_security/widgets/password_health_check.dart';
-import 'package:flutter/services.dart';
 import 'package:animate_do/animate_do.dart';
+
+class Tool {
+  final String titleEn;
+  final String titleAr;
+  final IconData icon;
+  final bool isLocked;
+  final VoidCallback? onTap;
+
+  Tool({
+    required this.titleEn,
+    required this.titleAr,
+    required this.icon,
+    this.isLocked = false,
+    this.onTap,
+  });
+}
 
 class ToolsScreen extends StatefulWidget {
   const ToolsScreen({super.key});
@@ -18,59 +34,59 @@ class ToolsScreen extends StatefulWidget {
 }
 
 class _ToolsScreenState extends State<ToolsScreen> {
-  double _passwordLength = 12;
-  bool _includeUppercase = true;
-  bool _includeNumbers = true;
-  bool _includeSymbols = true;
-  String _generatedPassword = '';
-  final TextEditingController _strengthCheckerController = TextEditingController();
-  static const String _lowercaseChars = 'abcdefghijklmnopqrstuvwxyz';
-  static const String _uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  static const String _numberChars = '0123456789';
-  static const String _symbolChars = '!@#\$%^&*()-_+=[]{}|;:,.<>?';
   int _currentIndex = 3;
+  final List<Tool> _tools = [
+    Tool(
+      titleEn: 'Password Strength Checker',
+      titleAr: 'فحص قوة كلمة المرور',
+      icon: Icons.lock_outline,
+      isLocked: false,
+      onTap: null, // Handled in build method
+    ),
+    Tool(
+      titleEn: 'Email Leak Checker',
+      titleAr: 'فحص تسرب البريد الإلكتروني',
+      icon: Icons.email_outlined,
+      isLocked: true,
+    ),
+    Tool(
+      titleEn: '2FA Code Generator',
+      titleAr: 'مولد رمز التوثيق الثنائي',
+      icon: Icons.security,
+      isLocked: true,
+    ),
+    Tool(
+      titleEn: 'Phishing Link Checker',
+      titleAr: 'فحص روابط التصيد',
+      icon: Icons.link_off,
+      isLocked: true,
+    ),
+  ];
 
   @override
   void initState() {
     super.initState();
-    _generatePassword();
+    _initializeTools();
   }
 
-  @override
-  void dispose() {
-    _strengthCheckerController.dispose();
-    super.dispose();
-  }
-
-  void _generatePassword() {
-    String chars = _lowercaseChars;
-    if (_includeUppercase) chars += _uppercaseChars;
-    if (_includeNumbers) chars += _numberChars;
-    if (_includeSymbols) chars += _symbolChars;
-
-    if (chars.isEmpty) {
-      setState(() {
-        _generatedPassword = 'Select at least one character type'.tr();
-      });
-      return;
-    }
-
-    final random = Random.secure();
-    String newPassword = '';
-    for (int i = 0; i < _passwordLength; i++) {
-      newPassword += chars[random.nextInt(chars.length)];
-    }
-
-    setState(() {
-      _generatedPassword = newPassword;
-    });
-  }
-
-  void _copyPasswordToClipboard() {
-    if (_generatedPassword.isNotEmpty && _generatedPassword != 'Select at least one character type'.tr()) {
-      Clipboard.setData(ClipboardData(text: _generatedPassword));
+  Future<void> _initializeTools() async {
+    try {
+      await contentService!.syncContentFromGitHub();
+      // Optionally preload tips related to password strength
+      final tips = await contentService!.getAllTips();
+      final passwordTips = tips.where((tip) => tip.category == 'Passwords').toList();
+      if (passwordTips.isNotEmpty && notificationService != null) {
+        final tip = passwordTips.first;
+        await notificationService!.scheduleDailyTipNotification(
+          context, // تمرير BuildContext
+          context.locale.languageCode == 'ar' ? tip.titleAr : tip.titleEn,
+          context.locale.languageCode == 'ar' ? tip.contentAr : tip.contentEn,
+        );
+      }
+    } catch (e) {
+      debugPrint('Error initializing tools or scheduling notification: $e');
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Password copied to clipboard!'.tr())),
+        SnackBar(content: Text('Error initializing tools: $e'.tr())),
       );
     }
   }
@@ -97,66 +113,6 @@ class _ToolsScreenState extends State<ToolsScreen> {
     }
   }
 
-  Widget _buildToolCard({
-    required IconData icon,
-    required String title,
-    required String description,
-    bool isLocked = false,
-    VoidCallback? onTap,
-  }) {
-    return FadeInUp(
-      duration: const Duration(milliseconds: 600),
-      child: Card(
-        margin: const EdgeInsets.symmetric(vertical: 8.0),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-        elevation: 2,
-        color: Theme.of(context).cardTheme.color,
-        surfaceTintColor: Theme.of(context).cardTheme.surfaceTintColor,
-        child: InkWell(
-          borderRadius: BorderRadius.circular(12),
-          onTap: isLocked ? null : onTap,
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
-              children: [
-                Icon(
-                  isLocked ? Icons.lock : icon,
-                  color: isLocked ? Theme.of(context).colorScheme.onSurface.withOpacity(0.5) : Theme.of(context).colorScheme.primary,
-                  size: 32,
-                ),
-                const SizedBox(width: 16),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        title.tr(),
-                        style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        description.tr(),
-                        style: Theme.of(context).textTheme.bodySmall,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ],
-                  ),
-                ),
-                Icon(
-                  isLocked ? Icons.lock : Icons.arrow_forward,
-                  color: isLocked ? Theme.of(context).colorScheme.onSurface.withOpacity(0.5) : Theme.of(context).colorScheme.primary,
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     final isArabic = context.locale.languageCode == 'ar';
@@ -164,11 +120,11 @@ class _ToolsScreenState extends State<ToolsScreen> {
       textDirection: isArabic ? ui.TextDirection.rtl : ui.TextDirection.ltr,
       child: Scaffold(
         appBar: AppBar(
-          title: Text('🔧 Security Tools'.tr()),
+          title: Text('🛠️ Security Tools'.tr()),
           centerTitle: true,
           backgroundColor: Theme.of(context).appBarTheme.backgroundColor?.withOpacity(0.8) ?? Colors.transparent,
           foregroundColor: Theme.of(context).appBarTheme.foregroundColor,
-          elevation: 1,
+          elevation: 0,
           flexibleSpace: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -188,187 +144,85 @@ class _ToolsScreenState extends State<ToolsScreen> {
               height: 1.0,
             ),
           ),
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.settings),
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const SettingsScreen()));
-              },
-            ),
-          ],
         ),
-        body: SingleChildScrollView(
+        body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _buildToolCard(
-                icon: Icons.vpn_key,
-                title: 'Create Strong Password',
-                description: 'Generate secure, customizable passwords.',
-                onTap: () {
-                  // Scroll to Password Generator section
-                  Scrollable.ensureVisible(
-                    context,
-                    alignment: 0.0,
-                    duration: const Duration(milliseconds: 300),
-                  );
-                },
-              ),
-              const SizedBox(height: 8),
-              FadeInUp(
+              FadeInDown(
                 duration: const Duration(milliseconds: 600),
-                child: Card(
-                  margin: const EdgeInsets.symmetric(vertical: 12.0),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                  elevation: 2,
-                  color: Theme.of(context).cardTheme.color,
-                  surfaceTintColor: Theme.of(context).cardTheme.surfaceTintColor,
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Password Generator'.tr(),
-                          style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
-                        ),
-                        const SizedBox(height: 16),
-                        Text(
-                          'Password Length: ${_passwordLength.toInt()}'.tr(args: [_passwordLength.toInt().toString()]),
-                          style: Theme.of(context).textTheme.titleMedium,
-                        ),
-                        Slider(
-                          value: _passwordLength,
-                          min: 8,
-                          max: 32,
-                          divisions: 24,
-                          label: _passwordLength.toInt().toString(),
-                          onChanged: (value) {
-                            setState(() {
-                              _passwordLength = value;
-                              _generatePassword();
-                            });
-                          },
-                          activeColor: Theme.of(context).colorScheme.primary,
-                          inactiveColor: Theme.of(context).colorScheme.primary.withOpacity(0.3),
-                        ),
-                        SwitchListTile(
-                          title: Text('Include Uppercase Letters'.tr(), style: Theme.of(context).textTheme.bodyLarge),
-                          value: _includeUppercase,
-                          onChanged: (value) {
-                            setState(() {
-                              _includeUppercase = value;
-                              _generatePassword();
-                            });
-                          },
-                          activeColor: Theme.of(context).colorScheme.primary,
-                          secondary: Icon(Icons.abc, color: Theme.of(context).colorScheme.onSurfaceVariant),
-                        ),
-                        SwitchListTile(
-                          title: Text('Include Numbers'.tr(), style: Theme.of(context).textTheme.bodyLarge),
-                          value: _includeNumbers,
-                          onChanged: (value) {
-                            setState(() {
-                              _includeNumbers = value;
-                              _generatePassword();
-                            });
-                          },
-                          activeColor: Theme.of(context).colorScheme.primary,
-                          secondary: Icon(Icons.numbers, color: Theme.of(context).colorScheme.onSurfaceVariant),
-                        ),
-                        SwitchListTile(
-                          title: Text('Include Symbols'.tr(), style: Theme.of(context).textTheme.bodyLarge),
-                          value: _includeSymbols,
-                          onChanged: (value) {
-                            setState(() {
-                              _includeSymbols = value;
-                              _generatePassword();
-                            });
-                          },
-                          activeColor: Theme.of(context).colorScheme.primary,
-                          secondary: Icon(Icons.star_outline, color: Theme.of(context).colorScheme.onSurfaceVariant),
-                        ),
-                        const SizedBox(height: 16),
-                        ElevatedButton.icon(
-                          onPressed: _generatePassword,
-                          icon: const Icon(Icons.refresh),
-                          label: Text('Generate New Password'.tr()),
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Theme.of(context).colorScheme.primary,
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                            padding: const EdgeInsets.symmetric(vertical: 16),
-                            minimumSize: const Size(double.infinity, 50),
-                          ),
-                        ),
-                        const SizedBox(height: 16),
-                        TextField(
-                          controller: TextEditingController(text: _generatedPassword),
-                          readOnly: true,
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12),
-                              borderSide: BorderSide(color: Theme.of(context).colorScheme.outline),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12),
-                              borderSide: BorderSide(color: Theme.of(context).colorScheme.outline),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12),
-                              borderSide: BorderSide(color: Theme.of(context).colorScheme.primary, width: 2),
-                            ),
-                            suffixIcon: IconButton(
-                              icon: const Icon(Icons.copy),
-                              onPressed: _copyPasswordToClipboard,
-                              tooltip: 'Copy'.tr(),
-                              color: Theme.of(context).colorScheme.primary,
-                            ),
-                            labelText: 'Generated Password'.tr(),
-                            labelStyle: Theme.of(context).textTheme.bodyMedium,
-                          ),
-                          style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                  ),
+                child: Text(
+                  'Explore Tools'.tr(),
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
                 ),
               ),
-              _buildToolCard(
-                icon: Icons.shield,
-                title: 'Analyze Password Strength',
-                description: 'Check how strong your password is.',
-                onTap: () {
-                  // Scroll to Password Strength Checker section
-                  Scrollable.ensureVisible(
-                    context,
-                    alignment: 0.0,
-                    duration: const Duration(milliseconds: 300),
-                  );
-                },
-              ),
-              const SizedBox(height: 8),
-              FadeInUp(
-                duration: const Duration(milliseconds: 600),
-                child: PasswordStrengthChecker(),
-              ),
-              _buildToolCard(
-                icon: Icons.email,
-                title: 'Email Leak Checker',
-                description: 'Check if your email has been compromised.',
-                isLocked: true,
-              ),
-              _buildToolCard(
-                icon: Icons.qr_code,
-                title: '2FA Code Generator',
-                description: 'Generate a mock 2FA code for testing.',
-                isLocked: true,
-              ),
-              _buildToolCard(
-                icon: Icons.link,
-                title: 'Phishing Link Checker',
-                description: 'Verify if a link is safe.',
-                isLocked: true,
+              const SizedBox(height: 16),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: _tools.length,
+                  itemBuilder: (context, index) {
+                    final tool = _tools[index];
+                    final title = isArabic ? tool.titleAr : tool.titleEn;
+                    return FadeInUp(
+                      duration: Duration(milliseconds: 600 + (index * 100)),
+                      child: Card(
+                        elevation: 2,
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                        child: ListTile(
+                          leading: Icon(
+                            tool.icon,
+                            color: tool.isLocked
+                                ? Theme.of(context).colorScheme.onSurface.withOpacity(0.5)
+                                : Theme.of(context).colorScheme.primary,
+                          ),
+                          title: Text(
+                            title,
+                            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                              color: tool.isLocked
+                                  ? Theme.of(context).colorScheme.onSurface.withOpacity(0.5)
+                                  : Theme.of(context).colorScheme.onSurface,
+                            ),
+                          ),
+                          trailing: tool.isLocked
+                              ? Icon(Icons.lock, color: Theme.of(context).colorScheme.error)
+                              : const Icon(Icons.arrow_forward_ios),
+                          onTap: tool.isLocked
+                              ? null
+                              : () {
+                            if (tool.titleEn == 'Password Strength Checker') {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => PasswordStrengthChecker(
+                                    onCheck: (result) async {
+                                      try {
+                                        await localStorageService.savePasswordCheckResult(result);
+                                        if (notificationService != null) {
+                                          await notificationService!.schedulePasswordCheckNotification(
+                                            context, // تمرير BuildContext
+                                            result['strength'] ?? 'Unknown',
+                                          );
+                                        }
+                                      } catch (e) {
+                                        debugPrint('Error saving or notifying password check result: $e');
+                                        ScaffoldMessenger.of(context).showSnackBar(
+                                          SnackBar(content: Text('Error saving password check result: $e'.tr())),
+                                        );
+                                      }
+                                    },
+                                  ),
+                                ),
+                              );
+                            } else if (tool.onTap != null) {
+                              tool.onTap!();
+                            }
+                          },
+                        ),
+                      ),
+                    );
+                  },
+                ),
               ),
             ],
           ),

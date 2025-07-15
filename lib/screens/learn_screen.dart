@@ -1,44 +1,16 @@
-import 'dart:convert';
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:easy_digital_security/services/content_service.dart';
 import 'package:easy_digital_security/main.dart';
-import 'package:easy_digital_security/utils/helpers.dart' as helpers;
-import 'package:easy_digital_security/utils/constants.dart';
 import 'package:easy_digital_security/screens/home_screen.dart';
 import 'package:easy_digital_security/screens/quiz_screen.dart';
 import 'package:easy_digital_security/screens/tools_screen.dart';
 import 'package:easy_digital_security/screens/settings_screen.dart';
+import 'package:easy_digital_security/models/article_model.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:animate_do/animate_do.dart';
-
-class Article {
-  final String id;
-  final String fileName;
-  final String titleEn;
-  final String titleAr;
-  final String category;
-
-  Article({
-    required this.id,
-    required this.fileName,
-    required this.titleEn,
-    required this.titleAr,
-    required this.category,
-  });
-
-  factory Article.fromJson(Map<String, dynamic> json) {
-    return Article(
-      id: json['id'] ?? '',
-      fileName: json['file_name'] ?? '',
-      titleEn: json['title_en'] ?? '',
-      titleAr: json['title_ar'] ?? '',
-      category: json['category'] ?? 'All',
-    );
-  }
-}
 
 class LearnScreen extends StatefulWidget {
   const LearnScreen({super.key});
@@ -69,18 +41,16 @@ class _LearnScreenState extends State<LearnScreen> {
 
   Future<void> _loadArticles() async {
     try {
-      final jsonString = await helpers.CustomAssetLoader.getAsset(AssetPaths.articlesJson);
-      if (jsonString != null && jsonString.isNotEmpty) {
-        final List<dynamic> articlesJson = json.decode(jsonString);
-        setState(() {
-          _articles = articlesJson.map((json) => Article.fromJson(json)).toList();
-          _filteredArticles = _articles;
-        });
-      } else {
-        debugPrint('No articles found in ${AssetPaths.articlesJson}');
-      }
+      await contentService!.syncContentFromGitHub();
+      final articles = await contentService!.getAllArticles();
+      setState(() {
+        _articles = articles;
+        _filteredArticles = _articles;
+      });
     } catch (e) {
-      debugPrint('Error loading articles: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error loading articles: $e'.tr())),
+      );
     }
   }
 
@@ -119,10 +89,16 @@ class _LearnScreenState extends State<LearnScreen> {
   }
 
   Future<void> _launchURL(String url) async {
-    final Uri uri = Uri.parse(url);
-    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+    try {
+      final Uri uri = Uri.parse(url);
+      if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Could not launch $url'.tr())),
+        );
+      }
+    } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Could not launch $url'.tr())),
+        SnackBar(content: Text('Error launching URL: $e'.tr())),
       );
     }
   }
@@ -199,7 +175,6 @@ class _LearnScreenState extends State<LearnScreen> {
             IconButton(
               icon: Icon(Icons.refresh, color: Theme.of(context).appBarTheme.foregroundColor),
               onPressed: () async {
-                await contentService!.syncContentFromGitHub();
                 await _loadArticles();
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(content: Text('Content refreshed!'.tr())),
@@ -464,9 +439,77 @@ class ArticleDetailScreen extends StatelessWidget {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
-            return Center(child: Text('Error loading article: ${snapshot.error}'.tr(), style: Theme.of(context).textTheme.bodyLarge));
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Error loading article: ${snapshot.error}'.tr(), style: Theme.of(context).textTheme.bodyLarge),
+                  const SizedBox(height: 16),
+                  ElevatedButton(
+                    onPressed: () async {
+                      try {
+                        await contentService!.syncContentFromGitHub();
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ArticleDetailScreen(
+                              articleFileName: articleFileName,
+                              articleTitle: articleTitle,
+                            ),
+                          ),
+                        );
+                      } catch (e) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('Error syncing content: $e'.tr())),
+                        );
+                      }
+                    },
+                    child: Text('Retry'.tr()),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Theme.of(context).colorScheme.primary,
+                      foregroundColor: Theme.of(context).colorScheme.onPrimary,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                    ),
+                  ),
+                ],
+              ),
+            );
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return Center(child: Text('Article content not found.'.tr(), style: Theme.of(context).textTheme.bodyLarge));
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Article content not found.'.tr(), style: Theme.of(context).textTheme.bodyLarge),
+                  const SizedBox(height: 16),
+                  ElevatedButton(
+                    onPressed: () async {
+                      try {
+                        await contentService!.syncContentFromGitHub();
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ArticleDetailScreen(
+                              articleFileName: articleFileName,
+                              articleTitle: articleTitle,
+                            ),
+                          ),
+                        );
+                      } catch (e) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('Error syncing content: $e'.tr())),
+                        );
+                      }
+                    },
+                    child: Text('Retry'.tr()),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Theme.of(context).colorScheme.primary,
+                      foregroundColor: Theme.of(context).colorScheme.onPrimary,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                    ),
+                  ),
+                ],
+              ),
+            );
           } else {
             return SingleChildScrollView(
               padding: const EdgeInsets.all(16.0),
