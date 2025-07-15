@@ -1,30 +1,902 @@
 [
   {
-    "id": "tip_001",
-    "titleAr": "استخدم كلمات مرور قوية",
-    "titleEn": "Use Strong Passwords",
-    "contentAr": "اجعل كلمات مرورك طويلة ومعقدة، مكونة من أحرف كبيرة وصغيرة، أرقام، ورموز. تجنب استخدام معلومات شخصية سهلة التخمين.",
-    "contentEn": "Make your passwords long and complex, consisting of uppercase and lowercase letters, numbers, and symbols. Avoid using easily guessable personal information."
+    "id": "tip1",
+    "title_en": "Use Strong Passwords",
+    "title_ar": "استخدم كلمات مرور قوية",
+    "content_en": "Create passwords with at least 12 characters, including uppercase, lowercase, numbers, and symbols.",
+    "content_ar": "أنشئ كلمات مرور تحتوي على 12 حرفًا على الأقل، بما في ذلك الأحرف الكبيرة والصغيرة والأرقام والرموز.",
+    "image_url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhaJ5EGTPS2bZqp42LxosdVrtFLzPuTN6RZ-6BmtW6NA79J8ysRteDvU23I6EnFfPoxdHUvfAYwVrnpPZqHW1vAV0SDQ9lkqN1XpEVulBrl_Bybtmfh-iL0aE0vyUQZQmkv-bqaFa2jc0U/s650/strong_password.jpg ",
+    "category": "Passwords"
   },
   {
-    "id": "tip_002",
-    "titleAr": "تفعيل المصادقة الثنائية (2FA)",
-    "titleEn": "Enable Two-Factor Authentication (2FA)",
-    "contentAr": "أضف طبقة أمان إضافية لحساباتك عن طريق تفعيل المصادقة الثنائية. هذا يتطلب رمزًا إضافيًا بالإضافة إلى كلمة المرور.",
-    "contentEn": "Add an extra layer of security to your accounts by enabling two-factor authentication. This requires an additional code in addition to your password."
+    "id": "tip2",
+    "title_en": "Avoid Phishing Scams",
+    "title_ar": "تجنب عمليات الاحتيال التصيدية",
+    "content_en": "Be cautious of suspicious emails or messages asking for personal information.",
+    "content_ar": "كن حذرًا من الرسائل الإلكترونية أو الرسائل المشبوهة التي تطلب معلومات شخصية.",
+    "image_url": "https://www.tech-mag.net/techmag/uploads/2022/07/%D8%A7%D9%84%D8%AA%D8%B5%D9%8A%D8%AF-%D8%A7%D9%84%D8%A7%D8%AD%D8%AA%D9%8A%D8%A7%D9%84%D9%8A-..-7-%D8%A8%D8%B1%D9%8A%D8%AF-%D8%A7%D9%84%D9%83%D8%AA%D8%B1%D9%88%D9%86%D9%8A-%D9%8A%D8%AC%D8%A8-%D8%AA%D8%AC%D9%86%D8%A8%D9%87-2.png ",
+    "category": "Phishing"
   },
   {
-    "id": "tip_003",
-    "titleAr": "احذر من رسائل التصيد الاحتيالي",
-    "titleEn": "Beware of Phishing Emails",
-    "contentAr": "لا تنقر على الروابط المشبوهة أو تفتح المرفقات من مصادر غير معروفة. تحقق دائمًا من هوية المرسل قبل اتخاذ أي إجراء.",
-    "contentEn": "Do not click on suspicious links or open attachments from unknown sources. Always verify the sender's identity before taking any action."
+    "id": "tip3",
+    "title_en": "Enable Two-Factor Authentication",
+    "title_ar": "فعّل المصادقة الثنائية",
+    "content_en": "Add an extra layer of security by enabling two-factor authentication on your accounts.",
+    "content_ar": "أضف طبقة أمان إضافية عبر تفعيل المصادقة الثنائية على حساباتك.",
+    "image_url": "https://example.com/2fa-image.jpg ",
+    "category": "Authentication"
   },
   {
-    "id": "tip_004",
-    "titleAr": "حافظ على تحديث برامجك",
-    "titleEn": "Keep Your Software Updated",
-    "contentAr": "تأكد من تحديث نظام التشغيل والتطبيقات بانتظام لسد الثغرات الأمنية المعروفة وحماية جهازك من البرمجيات الخبيثة.",
-    "contentEn": "Ensure your operating system and applications are regularly updated to patch known security vulnerabilities and protect your device from malware."
+    "id": "tip4",
+    "title_en": "Update Your Software Regularly",
+    "title_ar": "حدّث برامجك بانتظام",
+    "content_en": "Keep your operating system, apps, and antivirus updated to protect against vulnerabilities.",
+    "content_ar": "حافظ على تحديث نظام التشغيل والتطبيقات وبرامج مضاد الفيروسات لحمايتك من الثغرات الأمنية.",
+    "image_url": "https://example.com/software-update.jpg ",
+    "category": "Software Security"
+  },
+  {
+    "id": "tip5",
+    "title_en": "Use a Password Manager",
+    "title_ar": "استخدم مدير كلمات المرور",
+    "content_en": "Store your passwords securely using a trusted password manager application.",
+    "content_ar": "خزن كلمات المرور الخاصة بك بأمان باستخدام تطبيق موثوق لإدارة كلمات المرور.",
+    "image_url": "https://example.com/password-manager.jpg ",
+    "category": "Passwords"
+  },
+  {
+    "id": "tip6",
+    "title_en": "Don't Reuse Passwords",
+    "title_ar": "لا تستخدم نفس كلمة المرور أكثر من مرة",
+    "content_en": "Avoid using the same password across multiple sites to reduce risk if one site is compromised.",
+    "content_ar": "تجنّب استخدام نفس كلمة المرور عبر عدة مواقع لتقليل خطر الاختراق إذا تم اختراق أحد المواقع.",
+    "image_url": "https://example.com/reuse-password.jpg ",
+    "category": "Passwords"
+  },
+  {
+    "id": "tip7",
+    "title_en": "Be Careful With Public Wi-Fi",
+    "title_ar": "كن حذرًا عند استخدام الواي فاي العام",
+    "content_en": "Avoid logging into sensitive accounts like banking when connected to public Wi-Fi networks.",
+    "content_ar": "تجنّب تسجيل الدخول إلى الحسابات الحساسة مثل البنوك عند استخدام شبكات الواي فاي العامة.",
+    "image_url": "https://example.com/public-wifi.jpg ",
+    "category": "Network Security"
+  },
+  {
+    "id": "tip8",
+    "title_en": "Install Antivirus Software",
+    "title_ar": "ثبت برنامج مضاد الفيروسات",
+    "content_en": "Protect your device from malware by installing a reputable antivirus program.",
+    "content_ar": "احمِ جهازك من البرمجيات الخبيثة عن طريق تثبيت برنامج مضاد فيروسات موثوق.",
+    "image_url": "https://example.com/antivirus.jpg ",
+    "category": "Malware Protection"
+  },
+  {
+    "id": "tip9",
+    "title_en": "Backup Your Data Regularly",
+    "title_ar": "انسخ بياناتك احتياطيًا بانتظام",
+    "content_en": "Regularly back up important files to prevent data loss in case of ransomware or hardware failure.",
+    "content_ar": "قم بنسخ الملفات المهمة احتياطيًا بانتظام لمنع فقدان البيانات في حالة حدوث هجوم فدية أو عطل في الجهاز.",
+    "image_url": "https://example.com/data-backup.jpg ",
+    "category": "Data Protection"
+  },
+  {
+    "id": "tip10",
+    "title_en": "Lock Your Devices",
+    "title_ar": "اقفل أجهزتك عند عدم الاستخدام",
+    "content_en": "Always lock your phone, laptop, or tablet when not in use to prevent unauthorized access.",
+    "content_ar": "اقفل دائمًا هاتفك أو حاسوبك المحمول أو جهازك اللوحي عند عدم استخدامه لمنع الوصول غير المصرح به.",
+    "image_url": "https://example.com/device-lock.jpg ",
+    "category": "Device Security"
+  },
+  {
+    "id": "tip11",
+    "title_en": "Verify Email Senders",
+    "title_ar": "تحقق من مرسل البريد الإلكتروني",
+    "content_en": "Check the sender's email address before opening any attachments or clicking links.",
+    "content_ar": "تحقَّق من عنوان البريد الإلكتروني للمرسل قبل فتح أي مرفقات أو النقر على الروابط.",
+    "image_url": "https://example.com/email-sender.jpg ",
+    "category": "Phishing"
+  },
+  {
+    "id": "tip12",
+    "title_en": "Use HTTPS Websites",
+    "title_ar": "استخدم المواقع المشفرة (HTTPS)",
+    "content_en": "Ensure websites you visit use HTTPS to encrypt data exchanged between your browser and the server.",
+    "content_ar": "تأكد من أن المواقع التي تزورها تستخدم بروتوكول HTTPS لتشفير البيانات بين متصفحك والخادم.",
+    "image_url": "https://example.com/https.jpg ",
+    "category": "Network Security"
+  },
+  {
+    "id": "tip13",
+    "title_en": "Be Cautious of Suspicious Links",
+    "title_ar": "كن حذرًا من الروابط المشبوهة",
+    "content_en": "Avoid clicking on unknown or unexpected links in emails, messages, or websites.",
+    "content_ar": "تجنّب النقر على روابط غير معروفة أو غير متوقعة في البريد الإلكتروني أو الرسائل أو المواقع الإلكترونية.",
+    "image_url": "https://example.com/suspicious-link.jpg ",
+    "category": "Phishing"
+  },
+  {
+    "id": "tip14",
+    "title_en": "Secure Your Home Network",
+    "title_ar": "أمن شبكة الإنترنت المنزلية",
+    "content_en": "Change default router passwords and enable WPA3 encryption for better Wi-Fi security.",
+    "content_ar": "غيّر كلمة المرور الافتراضية لجهاز الراوتر وفعّل تشفير WPA3 لتحسين أمان الواي فاي المنزلي.",
+    "image_url": "https://example.com/home-network.jpg ",
+    "category": "Network Security"
+  },
+  {
+    "id": "tip15",
+    "title_en": "Don't Share Sensitive Info Publicly",
+    "title_ar": "لا تشارك المعلومات الحساسة بشكل علني",
+    "content_en": "Avoid posting personal details like ID numbers or addresses on social media.",
+    "content_ar": "تجنّب نشر تفاصيل شخصية مثل أرقام الهوية أو العناوين على مواقع التواصل الاجتماعي.",
+    "image_url": "https://example.com/private-info.jpg ",
+    "category": "Privacy"
+  },
+  {
+    "id": "tip16",
+    "title_en": "Review App Permissions",
+    "title_ar": "راجع أذونات التطبيقات",
+    "content_en": "Only grant necessary permissions to apps, such as camera or location access.",
+    "content_ar": "منْح التطبيقات فقط الأذونات اللازمة مثل الوصول إلى الكاميرا أو الموقع الجغرافي.",
+    "image_url": "https://example.com/app-permissions.jpg ",
+    "category": "Privacy"
+  },
+  {
+    "id": "tip17",
+    "title_en": "Use Virtual Private Networks (VPNs)",
+    "title_ar": "استخدم الشبكات الافتراضية الخاصة (VPN)",
+    "content_en": "Protect your online privacy by using a trusted VPN service, especially on public networks.",
+    "content_ar": "احمِ خصوصيتك على الإنترنت باستخدام خدمة VPN موثوقة، خاصةً على الشبكات العامة.",
+    "image_url": "https://example.com/vpn.jpg ",
+    "category": "Network Security"
+  },
+  {
+    "id": "tip18",
+    "title_en": "Watch Out for Smishing",
+    "title_ar": "انتبه من التصيد عبر الرسائل النصية",
+    "content_en": "Be suspicious of SMS messages that ask for personal information or contain unusual links.",
+    "content_ar": "كن حذرًا من الرسائل النصية التي تطلب معلومات شخصية أو تحتوي على روابط غير مألوفة.",
+    "image_url": "https://example.com/smishing.jpg ",
+    "category": "Phishing"
+  },
+  {
+    "id": "tip19",
+    "title_en": "Log Out After Use",
+    "title_ar": "سجّل الخروج بعد الاستخدام",
+    "content_en": "Always log out from sensitive services like banking or email after finishing your session.",
+    "content_ar": "سجّل دائمًا الخروج من الخدمات الحساسة مثل البنوك أو البريد الإلكتروني بعد الانتهاء من استخدامها.",
+    "image_url": "https://example.com/logout.jpg ",
+    "category": "Account Security"
+  },
+  {
+    "id": "tip20",
+    "title_en": "Monitor Account Activity",
+    "title_ar": "راقب نشاط الحسابات",
+    "content_en": "Regularly check your account activity for any unauthorized access or changes.",
+    "content_ar": "افحص نشاط حساباتك بانتظام لاكتشاف أي دخول أو تعديلات غير مصرح بها.",
+    "image_url": "https://example.com/account-monitoring.jpg ",
+    "category": "Account Security"
+  },
+  {
+    "id": "tip21",
+    "title_en": "Use Biometric Authentication",
+    "title_ar": "استخدم المصادقة البيولوجية",
+    "content_en": "Take advantage of fingerprint or facial recognition for more secure device access.",
+    "content_ar": "استفد من التعرف على بصمة الإصبع أو الوجه لتأمين الوصول إلى جهازك بشكل أفضل.",
+    "image_url": "https://example.com/biometric-auth.jpg ",
+    "category": "Authentication"
+  },
+  {
+    "id": "tip22",
+    "title_en": "Avoid Public Charging Stations",
+    "title_ar": "تجنب محطات الشحن العامة",
+    "content_en": "Public USB charging stations may contain malware; use your own charger and power outlet.",
+    "content_ar": "قد تحتوي محطات الشحن العامة عبر USB على برمجيات خبيثة؛ استخدم شاحنك الخاص وقابس الكهرباء.",
+    "image_url": "https://example.com/public-charging.jpg ",
+    "category": "Device Security"
+  },
+  {
+    "id": "tip23",
+    "title_en": "Secure Your Social Media Accounts",
+    "title_ar": "أمن حساباتك على مواقع التواصل الاجتماعي",
+    "content_en": "Adjust privacy settings to control who sees your posts and personal information.",
+    "content_ar": "غيّر إعدادات الخصوصية للتحكم في من يرى منشوراتك ومعلوماتك الشخصية.",
+    "image_url": "https://example.com/social-media-security.jpg ",
+    "category": "Privacy"
+  },
+  {
+    "id": "tip24",
+    "title_en": "Be Careful with Free Downloads",
+    "title_ar": "كن حذرًا من التنزيلات المجانية",
+    "content_en": "Free software or files from untrusted sources may contain viruses or malware.",
+    "content_ar": "قد تحتوي البرامج أو الملفات المجانية من مصادر غير موثوقة على فيروسات أو برمجيات خبيثة.",
+    "image_url": "https://example.com/free-downloads.jpg ",
+    "category": "Malware Protection"
+  },
+  {
+    "id": "tip25",
+    "title_en": "Enable Automatic Updates",
+    "title_ar": "فعّل التحديثات التلقائية",
+    "content_en": "Allow automatic updates for your apps and operating system to stay protected against new threats.",
+    "content_ar": "سمح بالتحديثات التلقائية لتطبيقاتك ونظام التشغيل لتبقى محميًا ضد التهديدات الجديدة.",
+    "image_url": "https://example.com/automatic-updates.jpg ",
+    "category": "Software Security"
+  },
+  {
+    "id": "tip26",
+    "title_en": "Use Encrypted Messaging Apps",
+    "title_ar": "استخدم تطبيقات مراسلة مشفرة",
+    "content_en": "Prevent eavesdropping by using messaging apps that offer end-to-end encryption.",
+    "content_ar": "احمِ رسائلك من الاختراق باستخدام تطبيقات مراسلة توفر تشفيرًا من طرف إلى طرف.",
+    "image_url": "https://example.com/encrypted-messaging.jpg ",
+    "category": "Privacy"
+  },
+  {
+    "id": "tip27",
+    "title_en": "Don't Trust All Pop-Ups",
+    "title_ar": "لا تثق بجميع النوافذ المنبثقة",
+    "content_en": "Avoid clicking on unexpected pop-up windows, as they may lead to malicious websites.",
+    "content_ar": "تجنّب النقر على النوافذ المنبثقة غير المتوقعة، فقد تؤدي إلى مواقع ضارة.",
+    "image_url": "https://example.com/pop-ups.jpg ",
+    "category": "Phishing"
+  },
+  {
+    "id": "tip28",
+    "title_en": "Check Website Certificates",
+    "title_ar": "تحقق من شهادات المواقع",
+    "content_en": "Look for a padlock icon in the address bar to ensure a website's SSL certificate is valid.",
+    "content_ar": "ابحث عن رمز القفل في شريط العنوان لضمان صحة شهادة SSL الخاصة بالموقع.",
+    "image_url": "https://example.com/website-certificate.jpg ",
+    "category": "Network Security"
+  },
+  {
+    "id": "tip29",
+    "title_en": "Create Regular Restore Points",
+    "title_ar": "أنشئ نقاط استعادة منتظمة",
+    "content_en": "Set up system restore points to recover your device if something goes wrong.",
+    "content_ar": "قم بإنشاء نقاط استعادة نظام منتظمة لاسترجاع جهازك إذا حدثت أي مشكلة.",
+    "image_url": "https://example.com/restore-point.jpg ",
+    "category": "Data Protection"
+  },
+  {
+    "id": "tip30",
+    "title_en": "Avoid Using Default Passwords",
+    "title_ar": "تجنب استخدام كلمات المرور الافتراضية",
+    "content_en": "Change default passwords on devices like routers and smart home systems.",
+    "content_ar": "غيّر كلمات المرور الافتراضية على الأجهزة مثل الراوتر وأنظمة المنزل الذكي.",
+    "image_url": "https://example.com/default-passwords.jpg ",
+    "category": "Passwords"
+  },
+  {
+    "id": "tip31",
+    "title_en": "Keep Devices Physically Secure",
+    "title_ar": "احفظ أجهزتك بأمان فيزيائي",
+    "content_en": "Never leave your laptop or phone unattended in public places.",
+    "content_ar": "لا تترك حاسوبك المحمول أو هاتفك بدون مراقبة في الأماكن العامة.",
+    "image_url": "https://example.com/device-theft.jpg ",
+    "category": "Device Security"
+  },
+  {
+    "id": "tip32",
+    "title_en": "Verify Account Recovery Options",
+    "title_ar": "تحقَّق من خيارات استعادة الحساب",
+    "content_en": "Ensure your recovery email and phone number are always up to date.",
+    "content_ar": "تأكد من أن بريدك الإلكتروني ورقم الهاتف لاستعادة الحساب دائمًا محدثان.",
+    "image_url": "https://example.com/account-recovery.jpg ",
+    "category": "Account Security"
+  },
+  {
+    "id": "tip33",
+    "title_en": "Use Ad Blockers for Better Security",
+    "title_ar": "استخدم أدوات حظر الإعلانات لأمان أفضل",
+    "content_en": "Ad blockers can prevent malicious ads from infecting your device.",
+    "content_ar": "يمكن لأدوات حظر الإعلانات منع الإعلانات الضارة من إصابة جهازك.",
+    "image_url": "https://example.com/ad-blocker.jpg ",
+    "category": "Malware Protection"
+  },
+  {
+    "id": "tip34",
+    "title_en": "Avoid Logging In From Shared Computers",
+    "title_ar": "تجنب تسجيل الدخول من أجهزة مشتركة",
+    "content_en": "Shared computers may store your login credentials or browsing history.",
+    "content_ar": "قد تخزن الأجهزة المشتركة بيانات تسجيل دخولك أو سجل التصفح الخاص بك.",
+    "image_url": "https://example.com/shared-computer.jpg ",
+    "category": "Account Security"
+  },
+  {
+    "id": "tip35",
+    "title_en": "Use Unique Email Addresses for Sensitive Accounts",
+    "title_ar": "استخدم عناوين بريد إلكتروني فريدة للحسابات الحساسة",
+    "content_en": "Separate your financial and personal accounts with different email addresses.",
+    "content_ar": "افصل بين حساباتك المالية والشخصية باستخدام عناوين بريد إلكتروني مختلفة.",
+    "image_url": "https://example.com/email-hygiene.jpg ",
+    "category": "Privacy"
+  },
+  {
+    "id": "tip36",
+    "title_en": "Be Aware of Shoulder Surfing",
+    "title_ar": "كن على دراية باختراق الرقبة",
+    "content_en": "Avoid entering sensitive data when someone is watching over your shoulder.",
+    "content_ar": "تجنّب إدخال بيانات حساسة عندما يكون هناك شخص ينظر من خلفك.",
+    "image_url": "https://example.com/shoulder-surfing.jpg ",
+    "category": "Privacy"
+  },
+  {
+    "id": "tip37",
+    "title_en": "Review Privacy Policies",
+    "title_ar": "راجع سياسات الخصوصية",
+    "content_en": "Read how companies collect, use, and protect your personal data before signing up.",
+    "content_ar": "اقرأ كيف تجمع الشركات وتستخدم وتحمي بياناتك الشخصية قبل التسجيل.",
+    "image_url": "https://example.com/privacy-policy.jpg ",
+    "category": "Privacy"
+  },
+  {
+    "id": "tip38",
+    "title_en": "Clear Browser Cache Regularly",
+    "title_ar": "امسح ذاكرة التخزين المؤقتة للمتصفح بانتظام",
+    "content_en": "Reduce tracking risks by clearing cookies and cache regularly.",
+    "content_ar": "قلّل من مخاطر تتبع البيانات عن طريق مسح الكوكيز والتخزين المؤقت بانتظام.",
+    "image_url": "https://example.com/browser-cache.jpg ",
+    "category": "Privacy"
+  },
+  {
+    "id": "tip39",
+    "title_en": "Use Private Browsing Mode",
+    "title_ar": "استخدم وضع التصفح الخاص",
+    "content_en": "Browse without saving history, cookies, or search records locally.",
+    "content_ar": "تصفح الإنترنت دون حفظ السجل أو الكوكيز أو سجل البحث محليًا.",
+    "image_url": "https://example.com/private-browsing.jpg ",
+    "category": "Privacy"
+  },
+  {
+    "id": "tip40",
+    "title_en": "Stay Educated About Cyber Threats",
+    "title_ar": "ابقَ مُطّلعًا على التهديدات السيبرانية",
+    "content_en": "Regularly learn about new security threats and best practices to stay safe online.",
+    "content_ar": "تعلّم باستمرار حول التهديدات الأمنية الجديدة والممارسات الجيدة للبقاء آمنًا على الإنترنت.",
+    "image_url": "https://example.com/cyber-awareness.jpg ",
+    "category": "General Security"
+  },
+  {
+    "id": "tip41",
+    "title_en": "Use Secure DNS Services",
+    "title_ar": "استخدم خدمات DNS آمنة",
+    "content_en": "Protect your browsing by using secure and private DNS services like Google DNS or Cloudflare.",
+    "content_ar": "احمِ تصفحك باستخدام خدمات DNS آمنة وخاصة مثل Google DNS أو Cloudflare.",
+    "image_url": "https://example.com/secure-dns.jpg ",
+    "category": "Network Security"
+  },
+  {
+    "id": "tip42",
+    "title_en": "Don't Ignore Security Warnings",
+    "title_ar": "لا تتجاهل تحذيرات الأمان",
+    "content_en": "Pay attention to browser and app warnings about insecure websites or downloads.",
+    "content_ar": "انتبه لتحذيرات المتصفح والتطبيقات حول المواقع أو التنزيلات غير الآمنة.",
+    "image_url": "https://example.com/security-warning.jpg ",
+    "category": "General Security"
+  },
+  {
+    "id": "tip43",
+    "title_en": "Create a Separate Email for Sign-Ups",
+    "title_ar": "أنشئ بريدًا إلكترونيًا منفصلًا للتسجيلات",
+    "content_en": "Use a secondary email address for signing up to online services to protect your main account.",
+    "content_ar": "استخدم عنوان بريد إلكتروني ثانوي عند التسجيل في الخدمات عبر الإنترنت لحماية حسابك الرئيسي.",
+    "image_url": "https://example.com/secondary-email.jpg ",
+    "category": "Privacy"
+  },
+  {
+    "id": "tip44",
+    "title_en": "Avoid Using Public Computers for Sensitive Tasks",
+    "title_ar": "تجنب استخدام الأجهزة العامة للمهام الحساسة",
+    "content_en": "Public computers may contain keyloggers or malware that can steal your data.",
+    "content_ar": "قد تحتوي الأجهزة العامة على برامج تسجيل ضغطات المفاتيح أو برمجيات خبيثة قد تسرق بياناتك.",
+    "image_url": "https://example.com/public-computer-risk.jpg ",
+    "category": "Account Security"
+  },
+  {
+    "id": "tip45",
+    "title_en": "Turn Off Location Services When Not Needed",
+    "title_ar": "عطل خدمات الموقع عند عدم الحاجة إليها",
+    "content_en": "Reduce tracking by disabling location access for apps that don't require it.",
+    "content_ar": "قلّل من تتبع موقعك عبر تعطيل الوصول للموقع للتطبيقات التي لا تحتاجه.",
+    "image_url": "https://example.com/location-tracking.jpg ",
+    "category": "Privacy"
+  },
+  {
+    "id": "tip46",
+    "title_en": "Use Encrypted Cloud Storage",
+    "title_ar": "استخدم تخزين سحابي مشفر",
+    "content_en": "Store sensitive files in encrypted cloud services to prevent unauthorized access.",
+    "content_ar": "احفظ الملفات الحساسة في خدمات تخزين سحابية مشفرة لمنع الوصول غير المصرح به.",
+    "image_url": "https://example.com/encrypted-cloud.jpg ",
+    "category": "Data Protection"
+  },
+  {
+    "id": "tip47",
+    "title_en": "Check for HTTPS Before Submitting Data",
+    "title_ar": "تحقق من وجود HTTPS قبل إرسال البيانات",
+    "content_en": "Make sure the website uses HTTPS before entering personal or financial information.",
+    "content_ar": "تأكد من أن الموقع يستخدم بروتوكول HTTPS قبل إدخال معلومات شخصية أو مالية.",
+    "image_url": "https://example.com/https-check.jpg ",
+    "category": "Network Security"
+  },
+  {
+    "id": "tip48",
+    "title_en": "Avoid Clicking on Ads from Unknown Sources",
+    "title_ar": "تجنب النقر على إعلانات من مصادر غير معروفة",
+    "content_en": "Many malicious links are hidden in fake ads; stick to trusted websites.",
+    "content_ar": "تحتوي العديد من الروابط الضارة على إعلانات وهمية؛ ابقَ على مواقع موثوقة.",
+    "image_url": "https://example.com/fake-ads.jpg ",
+    "category": "Phishing"
+  },
+  {
+    "id": "tip49",
+    "title_en": "Secure Your Router Admin Panel",
+    "title_ar": "أمن لوحة إدارة الراوتر",
+    "content_en": "Change default login credentials and disable remote management for better security.",
+    "content_ar": "غيّر بيانات الدخول الافتراضية وعطّل الإدارة عن بُعد لتحسين الأمان.",
+    "image_url": "https://example.com/router-security.jpg ",
+    "category": "Network Security"
+  },
+  {
+    "id": "tip50",
+    "title_en": "Be Careful with Voice Phishing (Vishing)",
+    "title_ar": "كن حذرًا من التصيد الصوتي (Vishing)",
+    "content_en": "Never share sensitive information over the phone unless you're certain of the caller's identity.",
+    "content_ar": "لا تشارك معلومات حساسة عبر الهاتف إلا إذا كنت متأكدًا من هوية المتصل.",
+    "image_url": "https://example.com/vishing.jpg ",
+    "category": "Phishing"
+  },
+  {
+    "id": "tip51",
+    "title_en": "Keep Your Browser Updated",
+    "title_ar": "حافظ على تحديث متصفحك",
+    "content_en": "Browser updates often include security patches that protect against new threats.",
+    "content_ar": "تحتوي تحديثات المتصفح غالبًا على تصحيحات أمنية لحمايتك من التهديدات الجديدة.",
+    "image_url": "https://example.com/browser-update.jpg ",
+    "category": "Software Security"
+  },
+  {
+    "id": "tip52",
+    "title_en": "Use a Firewall on Your Device",
+    "title_ar": "استخدم جدار حماية على جهازك",
+    "content_en": "Enable built-in firewalls to block unauthorized network access to your device.",
+    "content_ar": "فعّل جدران الحماية المدمجة لمنع الوصول غير المصرح إليه لجهازك عبر الشبكة.",
+    "image_url": "https://example.com/device-firewall.jpg ",
+    "category": "Network Security"
+  },
+  {
+    "id": "tip53",
+    "title_en": "Don’t Trust All QR Codes",
+    "title_ar": "لا تثق بجميع رموز الاستجابة السريعة",
+    "content_en": "QR codes can lead to malicious websites; only scan those from trusted sources.",
+    "content_ar": "يمكن أن تؤدي رموز QR إلى مواقع ضارة؛ امسح فقط تلك التي تأتي من مصادر موثوقة.",
+    "image_url": "https://example.com/qr-code-safety.jpg ",
+    "category": "Phishing"
+  },
+  {
+    "id": "tip54",
+    "title_en": "Monitor Financial Accounts Daily",
+    "title_ar": "راقب حساباتك المالية يوميًا",
+    "content_en": "Check your bank and credit card statements regularly for any suspicious activity.",
+    "content_ar": "افحص كشوفات حسابك البنكي وبطاقات الائتمان بانتظام لأي نشاط مشبوه.",
+    "image_url": "https://example.com/financial-monitoring.jpg ",
+    "category": "Account Security"
+  },
+  {
+    "id": "tip55",
+    "title_en": "Use Physical Security Keys",
+    "title_ar": "استخدم مفاتيح أمان فيزيائية",
+    "content_en": "Physical keys like YubiKey offer stronger two-factor authentication than SMS-based codes.",
+    "content_ar": "تقدم المفاتيح الفيزيائية مثل YubiKey مصادقة ثنائية أقوى من الرسائل القصيرة.",
+    "image_url": "https://example.com/security-key.jpg ",
+    "category": "Authentication"
+  },
+  {
+    "id": "tip56",
+    "title_en": "Be Cautious of Fake Tech Support Calls",
+    "title_ar": "كن حذرًا من مكالمات الدعم الفني الوهمية",
+    "content_en": "Scammers often pretend to be tech support agents to gain access to your device.",
+    "content_ar": "غالبًا ما يدّعي المحتالون أنهم من الدعم الفني للحصول على الوصول إلى جهازك.",
+    "image_url": "https://example.com/fake-tech-support.jpg ",
+    "category": "Social Engineering"
+  },
+  {
+    "id": "tip57",
+    "title_en": "Avoid Using Public Bluetooth Connections",
+    "title_ar": "تجنب استخدام اتصالات البلوتوث العامة",
+    "content_en": "Public Bluetooth connections can be exploited by attackers to access your device.",
+    "content_ar": "يمكن استغلال اتصالات البلوتوث العامة من قبل المهاجمين للوصول إلى جهازك.",
+    "image_url": "https://example.com/bluetooth-hacking.jpg ",
+    "category": "Device Security"
+  },
+  {
+    "id": "tip58",
+    "title_en": "Verify App Downloads",
+    "title_ar": "تحقَّق من تنزيل التطبيقات",
+    "content_en": "Only download apps from official stores and check reviews before installing.",
+    "content_ar": "قم فقط بتنزيل التطبيقات من المتاجر الرسمية وتحقق من التقييمات قبل التثبيت.",
+    "image_url": "https://example.com/app-download-check.jpg ",
+    "category": "Malware Protection"
+  },
+  {
+    "id": "tip59",
+    "title_en": "Use Time-Limited Access Permissions",
+    "title_ar": "استخدم أذونات وصول مؤقتة",
+    "content_en": "Grant temporary permissions to apps instead of permanent access where possible.",
+    "content_ar": "منْح التطبيقات أذونات وصول مؤقتة بدلًا من دائمة متى أمكن.",
+    "image_url": "https://example.com/temporary-permissions.jpg ",
+    "category": "Privacy"
+  },
+  {
+    "id": "tip60",
+    "title_en": "Educate Children About Online Safety",
+    "title_ar": "علّم الأطفال حول الأمان على الإنترنت",
+    "content_en": "Teach kids to avoid sharing personal information and recognize phishing attempts.",
+    "content_ar": "علّم الأطفال تجنّب مشاركة المعلومات الشخصية والتعرف على محاولات التصيد.",
+    "image_url": "https://example.com/online-safety-for-kids.jpg ",
+    "category": "General Security"
+  },
+  {
+    "id": "tip61",
+    "title_en": "Use a Dedicated Email for Shopping",
+    "title_ar": "استخدم بريدًا إلكترونيًا مخصصًا للتسوق",
+    "content_en": "Separate your shopping and financial accounts from personal emails to reduce phishing risks.",
+    "content_ar": "افصل بين حسابات التسوق والمصرفية وبريدك الشخصي لتقليل مخاطر التصيد.",
+    "image_url": "https://example.com/shopping-email.jpg ",
+    "category": "Privacy"
+  },
+  {
+    "id": "tip62",
+    "title_en": "Turn Off Bluetooth When Not in Use",
+    "title_ar": "عطل خاصية البلوتوث عند عدم استخدامها",
+    "content_en": "Reduce the risk of unauthorized access by disabling Bluetooth when not needed.",
+    "content_ar": "قلّل من خطر الوصول غير المصرح إليه عبر تعطيل البلوتوث عند عدم الحاجة إليها.",
+    "image_url": "https://example.com/disable-bluetooth.jpg ",
+    "category": "Device Security"
+  },
+  {
+    "id": "tip63",
+    "title_en": "Check for Firmware Updates on Smart Devices",
+    "title_ar": "تحقق من تحديثات البرامج الثابتة على الأجهزة الذكية",
+    "content_en": "Keep smart home devices secure by installing firmware updates regularly.",
+    "content_ar": "احفظ أمان أجهزة المنزل الذكي عبر تثبيت تحديثات البرامج الثابتة بانتظام.",
+    "image_url": "https://example.com/firmware-update.jpg ",
+    "category": "Software Security"
+  },
+  {
+    "id": "tip64",
+    "title_en": "Don't Trust All 'Security' Apps",
+    "title_ar": "لا تثق بجميع تطبيقات 'الأمان'",
+    "content_en": "Some fake antivirus apps may be malware; only install from trusted sources.",
+    "content_ar": "قد تكون بعض برامج مضاد الفيروسات الوهمية برمجيات خبيثة؛ ثبت فقط من مصادر موثوقة.",
+    "image_url": "https://example.com/fake-security-apps.jpg ",
+    "category": "Malware Protection"
+  },
+  {
+    "id": "tip65",
+    "title_en": "Avoid Using Public Cloud Storage for Sensitive Files",
+    "title_ar": "تجنب استخدام تخزين سحابي عام للملفات الحساسة",
+    "content_en": "Store sensitive documents in private or encrypted cloud services instead of public ones.",
+    "content_ar": "احفظ المستندات الحساسة في خدمات تخزين سحابية خاصة أو مشفرة بدلًا من العامة منها.",
+    "image_url": "https://example.com/public-cloud-storage.jpg ",
+    "category": "Data Protection"
+  },
+  {
+    "id": "tip66",
+    "title_en": "Enable Screen Lock Timeout",
+    "title_ar": "فعّل قفل الشاشة بعد فترة زمنية",
+    "content_en": "Set your device to lock automatically after a short period of inactivity.",
+    "content_ar": "عيّن جهازك ليُقفل تلقائيًا بعد فترة قصيرة من عدم النشاط.",
+    "image_url": "https://example.com/screen-lock-timeout.jpg ",
+    "category": "Device Security"
+  },
+  {
+    "id": "tip67",
+    "title_en": "Verify Links Before Opening Them",
+    "title_ar": "تحقَّق من الروابط قبل فتحها",
+    "content_en": "Hover over links or copy them to check their real destination before clicking.",
+    "content_ar": "مرِّر مؤشر الفأرة فوق الروابط أو انسخها للتحقق من الوجهة الحقيقية قبل النقر عليها.",
+    "image_url": "https://example.com/link-verification.jpg ",
+    "category": "Phishing"
+  },
+  {
+    "id": "tip68",
+    "title_en": "Use Encrypted Email Services",
+    "title_ar": "استخدم خدمات بريد إلكتروني مشفرة",
+    "content_en": "Protect your email communications with end-to-end encryption services like ProtonMail.",
+    "content_ar": "احمِ مراسلاتك الإلكترونية باستخدام خدمات تشفير من طرف إلى طرف مثل ProtonMail.",
+    "image_url": "https://example.com/encrypted-email.jpg ",
+    "category": "Privacy"
+  },
+  {
+    "id": "tip69",
+    "title_en": "Clear Search History Regularly",
+    "title_ar": "امسح سجل البحث بانتظام",
+    "content_en": "Reduce tracking by deleting your search history from browsers and apps.",
+    "content_ar": "قلّل من تتبع البيانات عبر حذف سجل البحث من المتصفحات والتطبيقات بانتظام.",
+    "image_url": "https://example.com/search-history.jpg ",
+    "category": "Privacy"
+  },
+  {
+    "id": "tip70",
+    "title_en": "Be Cautious With Free Wi-Fi Hotspots",
+    "title_ar": "كن حذرًا مع شبكات الواي فاي المجانية",
+    "content_en": "Free hotspots may lack security; avoid accessing sensitive information while connected.",
+    "content_ar": "قد تكون شبكات الواي فاي المجانية غير آمنة؛ اتجنّب الوصول إلى المعلومات الحساسة أثناء الاتصال بها.",
+    "image_url": "https://example.com/free-wifi-hotspot.jpg ",
+    "category": "Network Security"
+  },
+  {
+    "id": "tip71",
+    "title_en": "Use Secure File-Sharing Methods",
+    "title_ar": "استخدم طرقًا آمنة لمشاركة الملفات",
+    "content_en": "Prevent data leaks by using password-protected or encrypted file-sharing services.",
+    "content_ar": "احمِ بياناتك من التسرب عبر استخدام خدمات مشاركة ملفات محمية بكلمة مرور أو مشفرة.",
+    "image_url": "https://example.com/secure-file-sharing.jpg ",
+    "category": "Data Protection"
+  },
+  {
+    "id": "tip72",
+    "title_en": "Avoid Sharing Location in Real-Time",
+    "title_ar": "تجنب مشاركة الموقع في الوقت الفعلي",
+    "content_en": "Real-time location sharing can expose you to unwanted tracking or physical threats.",
+    "content_ar": "يمكن أن يؤدي مشاركة الموقع في الوقت الفعلي إلى تتبع غير مرغوب فيه أو تهديدات فعلية.",
+    "image_url": "https://example.com/location-sharing.jpg ",
+    "category": "Privacy"
+  },
+  {
+    "id": "tip73",
+    "title_en": "Review App Permissions Periodically",
+    "title_ar": "راجع أذونات التطبيقات بشكل دوري",
+    "content_en": "Revoke unnecessary permissions from apps that no longer need them.",
+    "content_ar": "اعزل الأذونات غير الضرورية من التطبيقات التي لم تعد تحتاجها.",
+    "image_url": "https://example.com/review-permissions.jpg ",
+    "category": "Privacy"
+  },
+  {
+    "id": "tip74",
+    "title_en": "Use a Virtual Machine for Suspicious Tasks",
+    "title_ar": "استخدم ماكينة افتراضية للمهام المشبوهة",
+    "content_en": "Run untrusted software or websites in a virtual machine to isolate potential threats.",
+    "content_ar": "قم بتشغيل البرامج أو المواقع غير الموثوقة ضمن ماكينة افتراضية لعزل التهديدات المحتملة.",
+    "image_url": "https://example.com/virtual-machine.jpg ",
+    "category": "Malware Protection"
+  },
+  {
+    "id": "tip75",
+    "title_en": "Don’t Share OTP Codes with Anyone",
+    "title_ar": "لا تشارك رموز التحقق المؤقتة مع أحد",
+    "content_en": "One-time passwords are meant for personal use only; never share them with others.",
+    "content_ar": "تُستخدم كلمات المرور لمرة واحدة لأغراض شخصية فقط؛ لا تشاركها مع الآخرين.",
+    "image_url": "https://example.com/otp-code.jpg ",
+    "category": "Authentication"
+  },
+  {
+    "id": "tip76",
+    "title_en": "Check Privacy Settings on New Apps",
+    "title_ar": "تحقق من إعدادات الخصوصية عند تثبيت تطبيقات جديدة",
+    "content_en": "Adjust privacy settings as soon as you install a new app to protect your data.",
+    "content_ar": "غيّر إعدادات الخصوصية بمجرد تثبيت تطبيق جديد لحماية بياناتك.",
+    "image_url": "https://example.com/app-privacy-settings.jpg ",
+    "category": "Privacy"
+  },
+  {
+    "id": "tip77",
+    "title_en": "Use Encrypted Messaging for Sensitive Conversations",
+    "title_ar": "استخدم مراسلة مشفرة للمحادثات الحساسة",
+    "content_en": "Ensure messages containing personal or confidential data are sent via encrypted platforms.",
+    "content_ar": "تأكد من إرسال الرسائل التي تحتوي على بيانات شخصية أو سرية عبر منصات مشفرة.",
+    "image_url": "https://example.com/encrypted-conversation.jpg ",
+    "category": "Privacy"
+  },
+  {
+    "id": "tip78",
+    "title_en": "Don’t Store Passwords in Browsers",
+    "title_ar": "لا تخزن كلمات المرور في المتصفحات",
+    "content_en": "Anyone with access to your device can view saved passwords in browsers.",
+    "content_ar": "يمكن لأي شخص لديه الوصول إلى جهازك عرض كلمات المرور المحفوظة في المتصفحات.",
+    "image_url": "https://example.com/browser-passwords.jpg ",
+    "category": "Passwords"
+  },
+  {
+    "id": "tip79",
+    "title_en": "Use Secure Remote Access Tools",
+    "title_ar": "استخدم أدوات الوصول عن بُعد آمنة",
+    "content_en": "Only use remote desktop tools with strong authentication and encryption.",
+    "content_ar": "استخدم فقط أدوات سطح المكتب البعيد التي توفر مصادقة قوية وتشفيرًا.",
+    "image_url": "https://example.com/remote-access-security.jpg ",
+    "category": "Network Security"
+  },
+  {
+    "id": "tip80",
+    "title_en": "Be Wary of Fake Software Cracks",
+    "title_ar": "كن حذرًا من برامج الكراك الوهمية",
+    "content_en": "Many cracked software packages contain malware; always download from official sources.",
+    "content_ar": "تحتوي العديد من البرامج غير الأصلية على برمجيات خبيثة؛ ثبت دائمًا من المصادر الرسمية.",
+    "image_url": "https://example.com/software-cracks.jpg ",
+    "category": "Malware Protection"
+  },
+  {
+    "id": "tip81",
+    "title_en": "Use a Guest Network for Visitors",
+    "title_ar": "استخدم شبكة ضيف للزوار",
+    "content_en": "Separate your main network from guest devices to protect your private data.",
+    "content_ar": "افصل شبكتك الرئيسية عن أجهزة الزوار لحماية بياناتك الخاصة.",
+    "image_url": "https://example.com/guest-network.jpg ",
+    "category": "Network Security"
+  },
+  {
+    "id": "tip82",
+    "title_en": "Enable Account Login Alerts",
+    "title_ar": "فعّل تنبيهات تسجيل الدخول للحسابات",
+    "content_en": "Get notified whenever someone logs into your account from a new device or location.",
+    "content_ar": "احصل على إشعار كلما قام شخص ما بتسجيل الدخول إلى حسابك من جهاز أو موقع جديد.",
+    "image_url": "https://example.com/login-alerts.jpg ",
+    "category": "Account Security"
+  },
+  {
+    "id": "tip83",
+    "title_en": "Avoid Using Shared Cloud Folders for Sensitive Files",
+    "title_ar": "تجنب استخدام مجلدات سحابية مشتركة للملفات الحساسة",
+    "content_en": "Shared folders may be accessed by unintended users; use direct sharing with access controls.",
+    "content_ar": "يمكن الوصول إلى المجلدات المشتركة من قبل مستخدمين غير مقصودين؛ استخدم مشاركة مباشرة مع تحديد الصلاحيات.",
+    "image_url": "https://example.com/shared-cloud-folder.jpg ",
+    "category": "Data Protection"
+  },
+  {
+    "id": "tip84",
+    "title_en": "Don't Trust All Online Surveys",
+    "title_ar": "لا تثق بجميع الاستبيانات عبر الإنترنت",
+    "content_en": "Some surveys collect personal data for malicious purposes; avoid sharing sensitive info.",
+    "content_ar": "تجمع بعض الاستبيانات بيانات شخصية لأغراض ضارة؛ تجنب مشاركة المعلومات الحساسة.",
+    "image_url": "https://example.com/online-survey-risk.jpg ",
+    "category": "Privacy"
+  },
+  {
+    "id": "tip85",
+    "title_en": "Keep Your Device Away From Water",
+    "title_ar": "ابعَد جهازك عن المياه",
+    "content_en": "Physical damage can expose stored data; keep your phone and laptop dry.",
+    "content_ar": "يمكن أن يتسبب التلف المادي في تسرب البيانات؛ ابقِ هاتفك وجهازك بعيدًا عن المياه.",
+    "image_url": "https://example.com/device-water-damage.jpg ",
+    "category": "Device Security"
+  },
+  {
+    "id": "tip86",
+    "title_en": "Check Privacy Policies Before Downloading Apps",
+    "title_ar": "تحقق من سياسات الخصوصية قبل تنزيل التطبيقات",
+    "content_en": "Understand how apps collect, store, and share your personal information.",
+    "content_ar": "افهم كيف تجمع التطبيقات بياناتك وتحفظها وتشاركها.",
+    "image_url": "https://example.com/app-privacy-policy.jpg ",
+    "category": "Privacy"
+  },
+  {
+    "id": "tip87",
+    "title_en": "Use Incognito Mode on Shared Devices",
+    "title_ar": "استخدم وضع التصفح الخفي على الأجهزة المشتركة",
+    "content_en": "Browse without saving history or cookies when using someone else's device.",
+    "content_ar": "تصفح الإنترنت دون حفظ السجل أو الكوكيز عند استخدام جهاز شخص آخر.",
+    "image_url": "https://example.com/incognito-mode.jpg ",
+    "category": "Privacy"
+  },
+  {
+    "id": "tip88",
+    "title_en": "Turn Off Auto-Sync When Not Needed",
+    "title_ar": "عطل المزامنة التلقائية عند عدم الحاجة إليها",
+    "content_en": "Reduce cloud exposure by disabling automatic syncing of sensitive data.",
+    "content_ar": "قلّل من تعرض البيانات السحابية عبر تعطيل المزامنة التلقائية للبيانات الحساسة.",
+    "image_url": "https://example.com/auto-sync-off.jpg ",
+    "category": "Data Protection"
+  },
+  {
+    "id": "tip89",
+    "title_en": "Verify App Permissions at Installation",
+    "title_ar": "تحقَّق من أذونات التطبيق عند التثبيت",
+    "content_en": "Review what permissions an app requests before allowing it to install.",
+    "content_ar": "راجع الأذونات التي يطلبها التطبيق قبل السماح بتثبيته.",
+    "image_url": "https://example.com/app-permissions-install.jpg ",
+    "category": "Privacy"
+  },
+  {
+    "id": "tip90",
+    "title_en": "Use Strong PINs for Mobile Devices",
+    "title_ar": "استخدم رموز مرور قوية للأجهزة المحمولة",
+    "content_en": "Use a 6-digit or custom alphanumeric PIN instead of simple patterns or short codes.",
+    "content_ar": "استخدم رمز مرور مكون من 6 أرقام أو رمز خاص مكوّن من أحرف وأرقام بدلًا من الأنماط البسيطة أو الرموز القصيرة.",
+    "image_url": "https://example.com/strong-pin.jpg ",
+    "category": "Device Security"
+  },
+  {
+    "id": "tip91",
+    "title_en": "Be Cautious With Publicly Shared Files",
+    "title_ar": "كن حذرًا من الملفات المشتركة علنًا",
+    "content_en": "Publicly shared files may contain malware or lead to phishing attempts.",
+    "content_ar": "قد تحتوي الملفات المشتركة علنًا على برمجيات خبيثة أو تؤدي إلى محاولات تصيد.",
+    "image_url": "https://example.com/public-file-sharing.jpg ",
+    "category": "Malware Protection"
+  },
+  {
+    "id": "tip92",
+    "title_en": "Don’t Leave Devices Unattended in Public",
+    "title_ar": "لا تترك أجهزتك بدون مراقبة في الأماكن العامة",
+    "content_en": "Devices left unattended are at risk of theft or unauthorized access.",
+    "content_ar": "الأجهزة التي تُترك بدون مراقبة تكون معرّضة للسرقة أو الوصول غير المصرح به.",
+    "image_url": "https://example.com/unattended-device-theft.jpg ",
+    "category": "Device Security"
+  },
+  {
+    "id": "tip93",
+    "title_en": "Use Encrypted Storage for Sensitive Data",
+    "title_ar": "استخدم تخزين مشفر للبيانات الحساسة",
+    "content_en": "Protect confidential files by storing them on encrypted drives or partitions.",
+    "content_ar": "احمِ الملفات السرية عن طريق تخزينها على وحدات تخزين مشفرة أو أقسام مشفرة.",
+    "image_url": "https://example.com/encrypted-storage.jpg ",
+    "category": "Data Protection"
+  },
+  {
+    "id": "tip94",
+    "title_en": "Turn Off Wi-Fi When Not in Use",
+    "title_ar": "عطل الواي فاي عند عدم الحاجة إليه",
+    "content_en": "Reduce exposure to potential threats by disabling Wi-Fi when not connected to a network.",
+    "content_ar": "قلّل من التعرض للتهديدات المحتملة عبر تعطيل الواي فاي عند عدم الاتصال بشبكة.",
+    "image_url": "https://example.com/disable-wifi.jpg ",
+    "category": "Network Security"
+  },
+  {
+    "id": "tip95",
+    "title_en": "Use Trusted Antivirus Software",
+    "title_ar": "استخدم برنامج مضاد فيروسات موثوق",
+    "content_en": "Install reputable antivirus software to detect and remove malware automatically.",
+    "content_ar": "ثبت برنامج مضاد فيروسات موثوق للكشف عن البرمجيات الخبيثة وإزالتها تلقائيًا.",
+    "image_url": "https://example.com/reputable-antivirus.jpg ",
+    "category": "Malware Protection"
+  },
+  {
+    "id": "tip96",
+    "title_en": "Avoid Using Default SSIDs on Routers",
+    "title_ar": "تجنب استخدام اسم الشبكة الافتراضي على الراوتر",
+    "content_en": "Change the default router SSID to hide the device model and improve security.",
+    "content_ar": "غيّر اسم الشبكة (SSID) الافتراضي للراوتر لإخفاء نوع الجهاز وتحسين الأمان.",
+    "image_url": "https://example.com/router-ssid.jpg ",
+    "category": "Network Security"
+  },
+  {
+    "id": "tip97",
+    "title_en": "Enable Screen Time Limits for Children",
+    "title_ar": "فعّل حدود زمنية للشاشة للأطفال",
+    "content_en": "Limit screen time to reduce online risks and promote healthy digital habits.",
+    "content_ar": "حدد وقت استخدام الشاشة لتقليل المخاطر الرقمية وتعزيز العادات الصحية الرقمية.",
+    "image_url": "https://example.com/screen-time-for-kids.jpg ",
+    "category": "General Security"
+  },
+  {
+    "id": "tip98",
+    "title_en": "Avoid Connecting to Unknown Bluetooth Devices",
+    "title_ar": "تجنب الاتصال بأجهزة بلوتوث غير معروفة",
+    "content_en": "Unknown devices may attempt to access your phone or steal data via Bluetooth.",
+    "content_ar": "قد تحاول الأجهزة غير المعروفة الوصول إلى هاتفك أو سرقة البيانات عبر البلوتوث.",
+    "image_url": "https://example.com/unknown-bluetooth-device.jpg ",
+    "category": "Device Security"
+  },
+  {
+    "id": "tip99",
+    "title_en": "Use Secure Payment Methods Online",
+    "title_ar": "استخدم طرق دفع آمنة على الإنترنت",
+    "content_en": "Prefer using credit cards or secure payment gateways like PayPal over direct bank transfers.",
+    "content_ar": "فضل استخدام بطاقات الائتمان أو بوابات الدفع الآمنة مثل PayPal بدلًا من التحويلات البنكية المباشرة.",
+    "image_url": "https://example.com/secure-payment-methods.jpg ",
+    "category": "Account Security"
+  },
+  {
+    "id": "tip100",
+    "title_en": "Stay Updated on Cybersecurity Trends",
+    "title_ar": "ابقَ على اطلاع بأحدث الاتجاهات في الأمن السيبراني",
+    "content_en": "Follow cybersecurity news and updates to stay aware of emerging threats.",
+    "content_ar": "تابع أخبار ومقالات الأمن السيبراني للبقاء على اطلاع بالتهديدات الجديدة.",
+    "image_url": "https://example.com/cybersecurity-trends.jpg ",
+    "category": "General Security"
   }
 ]

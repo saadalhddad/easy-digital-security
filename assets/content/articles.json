@@ -1,0 +1,30 @@
+[
+  {
+    "id": "article1",
+    "file_name": "phishing_attacks.md",
+    "title_en": "Phishing Attacks",
+    "title_ar": "الهجمات التصيدية",
+    "category": "Phishing"
+  },
+  {
+    "id": "article2",
+    "file_name": "strong_passwords.md",
+    "title_en": "Strong Passwords",
+    "title_ar": "كلمات المرور القوية",
+    "category": "Passwords"
+  },
+  {
+    "id": "article3",
+    "file_name": "two_factor_authentication.md",
+    "title_en": "Two-Factor Authentication",
+    "title_ar": "المصادقة الثنائية",
+    "category": "Authentication"
+  },
+  {
+    "id": "article4",
+    "file_name": "online_privacy.md",
+    "title_en": "Online Privacy",
+    "title_ar": "الخصوصية عبر الإنترنت",
+    "category": "Privacy"
+  }
+]

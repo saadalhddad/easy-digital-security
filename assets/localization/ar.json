@@ -1,56 +1,88 @@
 {
-    "@@locale": "ar",
-    "appTitle": "تطبيق الأمن الرقمي",
+    "Digital Security App": "تطبيق الأمان الرقمي",
+    "Welcome to Easy Digital Security!": "مرحبًا بكم في تطبيق الأمان الرقمي السهل!",
+    "Learn to stay safe online with tips, quizzes, and tools.": "تعلم كيفية البقاء آمنًا عبر الإنترنت باستخدام النصائح، الاختبارات، والأدوات.",
+    "Get Started": "ابدأ الآن",
     "Home": "الرئيسية",
-    "Daily Security Tip": "نصيحة أمنية يومية",
-    "No tips available today. Check back later!": "لا توجد نصائح متاحة اليوم. تحقق لاحقاً!",
+    "Daily Security Tip": "نصيحة الأمان اليومية",
+    "Stay Secure Today!": "ابقَ آمنًا اليوم!",
+    "Discover a new tip to protect yourself online.": "اكتشف نصيحة جديدة لحماية نفسك عبر الإنترنت.",
+    "5 of 20 Tips Completed": "5 من 20 نصيحة مكتملة",
+    "Start Quick Quiz 🧠": "ابدأ اختبارًا سريعًا 🧠",
+    "Read More": "اقرأ المزيد",
+    "No tips available today. Check back later!": "لا توجد نصائح متاحة اليوم. تحقق لاحقًا!",
     "Your Progress": "تقدمك",
-    "Overall Learning Progress": "التقدم العام في التعلم",
-    "Keep up the great work!": "استمر في العمل الرائع!",
     "Learn": "تعلم",
     "Quiz": "اختبار",
     "Tools": "أدوات",
     "Settings": "الإعدادات",
-    "Password Generator": "مولد كلمات المرور",
-    "Select at least one character type": "اختر نوعاً واحداً على الأقل من الأحرف",
-    "Password copied to clipboard!": "تم نسخ كلمة المرور إلى الحافظة!",
-    "Copy": "نسخ",
-    "Password Length: {length}": "طول كلمة المرور: {length}",
-    "Include Uppercase Letters": "تضمين أحرف كبيرة",
-    "Include Numbers": "تضمين أرقام",
-    "Include Symbols": "تضمين رموز",
-    "Generate New Password": "توليد كلمة مرور جديدة",
-    "Password Strength Checker": "فاحص قوة كلمة المرور",
-    "Enter Password": "أدخل كلمة المرور",
-    "Enter a password to check its strength.": "أدخل كلمة مرور للتحقق من قوتها.",
-    "Warning: This password has been exposed in a data breach. Do NOT use it!": "تحذير: كلمة المرور هذه تم كشفها في اختراق بيانات. لا تستخدمها!",
-    "Weak: Too short or too simple. Avoid using common words. Needs more complexity.": "ضعيفة: قصيرة جداً أو بسيطة جداً. تجنب استخدام الكلمات الشائعة. تحتاج إلى مزيد من التعقيد.",
-    "Medium: Good start! Consider making it longer and more diverse.": "متوسطة: بداية جيدة! فكر في جعلها أطول وأكثر تنوعاً.",
-    "Strong: Excellent! This password is hard to guess.": "قوية: ممتاز! هذه الكلمة يصعب تخمينها.",
-    "Secure: Superb! This password offers maximum protection.": "آمنة: رائعة! هذه الكلمة توفر أقصى حماية.",
-    "Unknown strength.": "قوة غير معروفة.",
-    "Tips for Strong Passwords:": "نصائح لكلمات المرور القوية:",
-    "Use a mix of uppercase and lowercase letters.": "استخدم مزيجاً من الأحرف الكبيرة والصغيرة.",
-    "Include numbers and symbols.": "تضمين الأرقام والرموز.",
-    "Make it at least 12 characters long.": "اجعلها بطول 12 حرفاً على الأقل.",
-    "Avoid personal information or common words.": "تجنب المعلومات الشخصية أو الكلمات الشائعة.",
-    "Use a unique password for each account.": "استخدم كلمة مرور فريدة لكل حساب.",
-    "Tap to read more": "انقر للقراءة المزيد",
-    "Close": "إغلاق",
-    "Understanding Phishing Attacks": "فهم هجمات التصيد الاحتيالي",
+    "Daily Notifications": "الإشعارات اليومية",
+    "Dark Mode": "الوضع الداكن",
+    "Select Language": "اختر اللغة",
+    "Notification Time": "وقت الإشعار",
+    "Font Size": "حجم الخط",
+    "Reset App Settings": "إعادة تعيين إعدادات التطبيق",
+    "Confirm Reset": "تأكيد إعادة التعيين",
+    "This will reset all settings and data. Are you sure?": "سيؤدي هذا إلى إعادة تعيين جميع الإعدادات والبيانات. هل أنت متأكد؟",
+    "Cancel": "إلغاء",
+    "Reset": "إعادة تعيين",
+    "Final Confirmation": "التأكيد النهائي",
+    "This action cannot be undone. Proceed?": "هذا الإجراء لا يمكن التراجع عنه. هل تريد المتابعة؟",
+    "App settings reset successfully.": "تم إعادة تعيين إعدادات التطبيق بنجاح.",
+    "Daily notifications enabled.": "تم تفعيل الإشعارات اليومية.",
+    "Daily notifications disabled.": "تم تعطيل الإشعارات اليومية.",
+    "Error occurred. Please try again.": "حدث خطأ. يرجى المحاولة مرة أخرى.",
+    "Refresh Content": "تحديث المحتوى",
+    "Content refreshed!": "تم تحديث المحتوى!",
+    "Completed Quizzes": "الاختبارات المكتملة",
+    "Remaining Quizzes": "الاختبارات المتبقية",
+    "Quiz Progress": "تقدم الاختبار",
+    "No progress yet. Complete a quiz to see your progress!": "لا يوجد تقدم بعد. أكمل اختبارًا لرؤية تقدمك!",
+    "All Categories": "جميع الفئات",
+    "Passwords": "كلمات المرور",
+    "Phishing": "التصيد",
+    "Authentication": "المصادقة",
+    "Privacy": "الخصوصية",
+    "No articles available.": "لا توجد مقالات متاحة.",
+    "End of content": "نهاية المحتوى",
+    "View Content on GitHub": "عرض المحتوى على GitHub",
+    "Could not launch {url}": "تعذر فتح {url}",
+    "Loading quizzes...": "جارٍ تحميل الاختبارات...",
+    "No quiz available to start.": "لا يوجد اختبار متاح للبدء.",
+    "Ready to challenge your knowledge?": "هل أنت جاهز لتحدي معرفتك؟",
+    "This quiz has {length} questions.": "هذا الاختبار يحتوي على {length} أسئلة.",
+    "Start Quiz": "بدء الاختبار",
+    "Quiz Completed!": "اكتمل الاختبار!",
+    "You scored {score} out of {total} questions.": "لقد حصلت على {score} من أصل {total} أسئلة.",
+    "Restart Quiz": "إعادة الاختبار",
+    "Back to Home": "العودة إلى الرئيسية",
     "Question {current} of {total}": "السؤال {current} من {total}",
+    "Please select an answer.": "يرجى اختيار إجابة.",
     "Check Answer": "تحقق من الإجابة",
     "Next Question": "السؤال التالي",
     "Finish Quiz": "إنهاء الاختبار",
-    "Quiz Completed!": "اكتمل الاختبار!",
-    "You scored {score} out of {total} questions.": "لقد أحرزت {score} من أصل {total} أسئلة.",
-    "Restart Quiz": "إعادة الاختبار",
-    "Back to Home": "العودة إلى الرئيسية",
-    "Dark Mode": "الوضع الليلي",
-    "Select Language": "اختر اللغة",
-    "English": "الإنجليزية",
-    "العربية": "العربية",
-    "Daily Notifications": "الإشعارات اليومية",
-    "Daily notifications enabled.": "تم تفعيل الإشعارات اليومية.",
-    "Daily notifications disabled.": "تم تعطيل الإشعارات اليومية."
+    "Password Generator": "مولد كلمات المرور",
+    "Password Length: {length}": "طول كلمة المرور: {length}",
+    "Include Uppercase Letters": "تضمين الأحرف الكبيرة",
+    "Include Numbers": "تضمين الأرقام",
+    "Include Symbols": "تضمين الرموز",
+    "Generate New Password": "توليد كلمة مرور جديدة",
+    "Generated Password": "كلمة المرور المولدة",
+    "Copy": "نسخ",
+    "Password copied to clipboard!": "تم نسخ كلمة المرور إلى الحافظة!",
+    "Select at least one character type": "اختر نوعًا واحدًا على الأقل من الأحرف",
+    "Password Strength Checker": "فاحص قوة كلمة المرور",
+    "Enter Password": "أدخل كلمة المرور",
+    "Tips for Strong Passwords:": "نصائح لكلمات مرور قوية:",
+    "Use a mix of uppercase and lowercase letters.": "استخدم مزيجًا من الأحرف الكبيرة والصغيرة.",
+    "Include numbers and symbols.": "تضمين الأرقام والرموز.",
+    "Make it at least 12 characters long.": "اجعلها مكونة من 12 حرفًا على الأقل.",
+    "Avoid personal information or common words.": "تجنب استخدام المعلومات الشخصية أو الكلمات الشائعة.",
+    "Use a unique password for each account.": "استخدم كلمة مرور فريدة لكل حساب.",
+    "Enter a password to check its strength.": "أدخل كلمة مرور للتحقق من قوتها.",
+    "Warning: This password has been exposed in a data breach. Do NOT use it!": "تحذير: تم الكشف عن كلمة المرور هذه في خرق بيانات. لا تستخدمها!",
+    "Weak: Too short or too simple. Avoid using common words. Needs more complexity.": "ضعيفة: قصيرة جدًا أو بسيطة جدًا. تجنب استخدام الكلمات الشائعة. تحتاج إلى مزيد من التعقيد.",
+    "Medium: Good start! Consider making it longer and more diverse.": "متوسطة: بداية جيدة! فكر في جعلها أطول وأكثر تنوعًا.",
+    "Strong: Excellent! This password is hard to guess.": "قوية: ممتاز! من الصعب تخمين كلمة المرور هذه.",
+    "Secure: Superb! This password offers maximum protection.": "آمنة: رائع! توفر كلمة المرور هذه الحماية القصوى."
 }

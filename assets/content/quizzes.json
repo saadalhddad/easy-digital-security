@@ -1,0 +1,633 @@
+[
+  {
+    "id": "quiz1",
+    "title_en": "Password Security Quiz",
+    "title_ar": "اختبار أمان كلمة المرور",
+    "questions": [
+      {
+        "id": "q1",
+        "question_en": "What is the minimum recommended length for a strong password?",
+        "question_ar": "ما هو الحد الأدنى الموصى به لطول كلمة المرور القوية؟",
+        "answers": [
+          {"id": "a1", "text_en": "6 characters", "text_ar": "6 أحرف", "is_correct": false},
+          {"id": "a2", "text_en": "12 characters", "text_ar": "12 حرفًا", "is_correct": true},
+          {"id": "a3", "text_en": "8 characters", "text_ar": "8 أحرف", "is_correct": false},
+          {"id": "a4", "text_en": "10 characters", "text_ar": "10 أحرف", "is_correct": false}
+        ],
+        "correct_answer_id": "a2",
+        "explanation": "A strong password should be at least 12 characters long.",
+        "explanation_ar": "يجب أن تكون كلمة المرور القوية مكونة من 12 حرفًا على الأقل."
+      },
+      {
+        "id": "q2",
+        "question_en": "Which of the following makes a password more secure?",
+        "question_ar": "ما الذي يجعل كلمة المرور أكثر أمانًا؟",
+        "answers": [
+          {"id": "a1", "text_en": "Using only lowercase letters", "text_ar": "استخدام الحروف الصغيرة فقط", "is_correct": false},
+          {"id": "a2", "text_en": "Mixing uppercase and lowercase letters", "text_ar": "دمج الحروف الكبيرة والصغيرة", "is_correct": true},
+          {"id": "a3", "text_en": "Using your birthday as password", "text_ar": "استخدام تاريخ ميلادك ككلمة مرور", "is_correct": false},
+          {"id": "a4", "text_en": "Repeating the same character", "text_ar": "تكرار نفس الحرف", "is_correct": false}
+        ],
+        "correct_answer_id": "a2",
+        "explanation": "Mixing uppercase, lowercase, numbers, and symbols improves password strength.",
+        "explanation_ar": "دمج الحروف الكبيرة والصغيرة والأرقام والرموز يعزز أمان كلمة المرور."
+      },
+      {
+        "id": "q3",
+        "question_en": "Where should you store your passwords securely?",
+        "question_ar": "أين يجب تخزين كلمات المرور بأمان؟",
+        "answers": [
+          {"id": "a1", "text_en": "On a sticky note near your computer", "text_ar": "على ملصق لاصق بجانب جهاز الكمبيوتر", "is_correct": false},
+          {"id": "a2", "text_en": "In a password manager app", "text_ar": "في تطبيق إدارة كلمات المرور", "is_correct": true},
+          {"id": "a3", "text_en": "In a plain text file on your desktop", "text_ar": "في ملف نصي عادي على سطح المكتب", "is_correct": false},
+          {"id": "a4", "text_en": "On social media posts", "text_ar": "في منشورات مواقع التواصل الاجتماعي", "is_correct": false}
+        ],
+        "correct_answer_id": "a2",
+        "explanation": "Password managers provide encrypted storage for passwords.",
+        "explanation_ar": "توفر برامج إدارة كلمات المرور تخزينًا مشفرًا لكلمات المرور."
+      },
+      {
+        "id": "q4",
+        "question_en": "Why should you avoid using the same password across multiple sites?",
+        "question_ar": "لماذا يجب تجنب استخدام نفس كلمة المرور عبر عدة مواقع؟",
+        "answers": [
+          {"id": "a1", "text_en": "It's easier to remember", "text_ar": "من الأسهل تذكرها", "is_correct": false},
+          {"id": "a2", "text_en": "If one site is hacked, all accounts are at risk", "text_ar": "إذا تم اختراق موقع واحد، فإن جميع الحسابات في خطر", "is_correct": true},
+          {"id": "a3", "text_en": "It uses less memory", "text_ar": "تستهلك ذاكرة أقل", "is_correct": false},
+          {"id": "a4", "text_en": "It speeds up login", "text_ar": "تسريع عملية تسجيل الدخول", "is_correct": false}
+        ],
+        "correct_answer_id": "a2",
+        "explanation": "Using the same password increases vulnerability if any service gets compromised.",
+        "explanation_ar": "استخدام نفس كلمة المرور يزيد من الضعف إذا تم اختراق أي خدمة."
+      }
+    ]
+  },
+  {
+    "id": "quiz2",
+    "title_en": "Phishing Awareness Quiz",
+    "title_ar": "اختبار الوعي بالتصيد الاحتيالي",
+    "questions": [
+      {
+        "id": "q1",
+        "question_en": "Which of the following is a sign of a phishing email?",
+        "question_ar": "أي مما يلي علامة على رسالة بريد تصيدي؟",
+        "answers": [
+          {"id": "a1", "text_en": "Spelling mistakes in the email", "text_ar": "أخطاء إملائية في البريد الإلكتروني", "is_correct": true},
+          {"id": "a2", "text_en": "Official company logo", "text_ar": "شعار الشركة الرسمي", "is_correct": false},
+          {"id": "a3", "text_en": "Email from official domain", "text_ar": "بريد من نطاق رسمي", "is_correct": false},
+          {"id": "a4", "text_en": "Clear sender name", "text_ar": "اسم مرسل واضح", "is_correct": false}
+        ],
+        "correct_answer_id": "a1",
+        "explanation": "Phishing emails often contain spelling or grammatical errors.",
+        "explanation_ar": "غالبًا ما تحتوي رسائل التصيد على أخطاء إملائية أو نحوية."
+      },
+      {
+        "id": "q2",
+        "question_en": "What should you do if you receive a suspicious email claiming to be from your bank?",
+        "question_ar": "ماذا يجب أن تفعل إذا تلقيت رسالة بريد مشبوهة تدعي أنها من بنكك؟",
+        "answers": [
+          {"id": "a1", "text_en": "Click the link and verify your account", "text_ar": "انقر على الرابط وتحقق من حسابك", "is_correct": false},
+          {"id": "a2", "text_en": "Delete it immediately", "text_ar": "احذفها فورًا", "is_correct": false},
+          {"id": "a3", "text_en": "Report it to your bank directly", "text_ar": "قم بالإبلاغ عنها مباشرة لبنكك", "is_correct": true},
+          {"id": "a4", "text_en": "Reply with your account details", "text_ar": "أجب بتفاصيل حسابك", "is_correct": false}
+        ],
+        "correct_answer_id": "a3",
+        "explanation": "Never reply or click links; instead, contact the institution through official channels.",
+        "explanation_ar": "لا تجيب ولا تنقر على الروابط؛ بل اتصل بالمؤسسة عبر قنوات رسمية."
+      },
+      {
+        "id": "q3",
+        "question_en": "What is 'smishing'?",
+        "question_ar": "ما هو 'التصيد عبر الرسائل النصية' (Smishing)؟",
+        "answers": [
+          {"id": "a1", "text_en": "Phishing via SMS", "text_ar": "تصيد عبر الرسائل النصية", "is_correct": true},
+          {"id": "a2", "text_en": "Phishing via email", "text_ar": "تصيد عبر البريد الإلكتروني", "is_correct": false},
+          {"id": "a3", "text_en": "Phishing via phone calls", "text_ar": "تصيد عبر المكالمات الهاتفية", "is_correct": false},
+          {"id": "a4", "text_en": "Phishing via websites", "text_ar": "تصيد عبر المواقع الإلكترونية", "is_correct": false}
+        ],
+        "correct_answer_id": "a1",
+        "explanation": "Smishing refers to phishing attacks conducted through SMS messages.",
+        "explanation_ar": "يشير 'سميشينج' إلى هجمات التصيد التي تُنفذ عبر الرسائل النصية."
+      },
+      {
+        "id": "q4",
+        "question_en": "Which of these URLs is most likely to be used in a phishing attack?",
+        "question_ar": "أي من هذه الروابط من المرجح أن تستخدم في هجوم تصيد؟",
+        "answers": [
+          {"id": "a1", "text_en": "https://www.bankofamerica.com ", "text_ar": "https://www.bankofamerica.com ", "is_correct": false},
+          {"id": "a2", "text_en": "https://bank-of-america.net ", "text_ar": "https://bank-of-america.net ", "is_correct": true},
+          {"id": "a3", "text_en": "https://secure.bankofamerica.com ", "text_ar": "https://secure.bankofamerica.com ", "is_correct": false},
+          {"id": "a4", "text_en": "https://login.bankofamerica.com ", "text_ar": "https://login.bankofamerica.com ", "is_correct": false}
+        ],
+        "correct_answer_id": "a2",
+        "explanation": "Suspicious domains like .net instead of .com may indicate phishing.",
+        "explanation_ar": "قد تشير المجالات المشبوهة مثل .net بدلاً من .com إلى التصيد."
+      }
+    ]
+  },
+
+  {
+    "id": "quiz3",
+    "title_en": "Two-Factor Authentication Quiz",
+    "title_ar": "اختبار المصادقة الثنائية",
+    "questions": [
+      {
+        "id": "q1",
+        "question_en": "Which of the following is NOT considered a factor in two-factor authentication?",
+        "question_ar": "أي مما يلي لا يُعتبر عاملاً في المصادقة الثنائية؟",
+        "answers": [
+          {"id": "a1", "text_en": "Something you know", "text_ar": "شيء تعرفه", "is_correct": false},
+          {"id": "a2", "text_en": "Something you have", "text_ar": "شيء تمتلكه", "is_correct": false},
+          {"id": "a3", "text_en": "Something you are", "text_ar": "شيء أنت عليه", "is_correct": false},
+          {"id": "a4", "text_en": "Something you saw", "text_ar": "شيء رأيته", "is_correct": true}
+        ],
+        "correct_answer_id": "a4",
+        "explanation": "'Something you saw' is not a valid authentication factor.",
+        "explanation_ar": "'شيء رأيته' ليس عاملاً صالحًا للمصادقة."
+      },
+      {
+        "id": "q2",
+        "question_en": "Which of the following is a common second factor used in 2FA?",
+        "question_ar": "أي مما يلي يُستخدم عادةً كعامل ثاني في المصادقة الثنائية؟",
+        "answers": [
+          {"id": "a1", "text_en": "Your email address", "text_ar": "عنوان بريدك الإلكتروني", "is_correct": false},
+          {"id": "a2", "text_en": "A fingerprint scan", "text_ar": "مسح بصمة الإصبع", "is_correct": true},
+          {"id": "a3", "text_en": "Your full name", "text_ar": "اسمك الكامل", "is_correct": false},
+          {"id": "a4", "text_en": "Your date of birth", "text_ar": "تاريخ ميلادك", "is_correct": false}
+        ],
+        "correct_answer_id": "a2",
+        "explanation": "Biometric data like fingerprint scans are common second factors.",
+        "explanation_ar": "تُستخدم البيانات الحيوية مثل مسح البصمات كعامل ثاني شائع."
+      },
+      {
+        "id": "q3",
+        "question_en": "What is the main advantage of using two-factor authentication?",
+        "question_ar": "ما هو الميزة الرئيسية لاستخدام المصادقة الثنائية؟",
+        "answers": [
+          {"id": "a1", "text_en": "Faster login", "text_ar": "تسجيل دخول أسرع", "is_correct": false},
+          {"id": "a2", "text_en": "Increased security", "text_ar": "زيادة الأمان", "is_correct": true},
+          {"id": "a3", "text_en": "Easier password management", "text_ar": "إدارة كلمات مرور أسهل", "is_correct": false},
+          {"id": "a4", "text_en": "Lower costs", "text_ar": "تكاليف أقل", "is_correct": false}
+        ],
+        "correct_answer_id": "a2",
+        "explanation": "Two-factor authentication adds an extra layer of security beyond passwords.",
+        "explanation_ar": "تضيف المصادقة الثنائية طبقة أمان إضافية غير كلمات المرور."
+      },
+      {
+        "id": "q4",
+        "question_en": "Which of the following is NOT a common method of 2FA?",
+        "question_ar": "أي مما يلي ليس وسيلة شائعة للمصادقة الثنائية؟",
+        "answers": [
+          {"id": "a1", "text_en": "One-time password via SMS", "text_ar": "كلمة مرور لمرة واحدة عبر الرسائل النصية", "is_correct": false},
+          {"id": "a2", "text_en": "Security questions", "text_ar": "أسئلة الأمان", "is_correct": true},
+          {"id": "a3", "text_en": "Authentication app", "text_ar": "تطبيق مصادقة", "is_correct": false},
+          {"id": "a4", "text_en": "Biometric scan", "text_ar": "مسح بيولوجي", "is_correct": false}
+        ],
+        "correct_answer_id": "a2",
+        "explanation": "Security questions are not considered a secure or reliable 2FA method.",
+        "explanation_ar": "لا تُعتبر أسئلة الأمان وسيلة آمنة أو موثوقة للمصادقة الثنائية."
+      }
+    ]
+  },
+  {
+    "id": "quiz4",
+    "title_en": "Malware Awareness Quiz",
+    "title_ar": "اختبار الوعي بالبرمجيات الخبيثة",
+    "questions": [
+      {
+        "id": "q1",
+        "question_en": "What does malware stand for?",
+        "question_ar": "ماذا تعني كلمة 'برمجيات خبيثة'؟",
+        "answers": [
+          {"id": "a1", "text_en": "Malicious software", "text_ar": "برمجيات خبيثة", "is_correct": true},
+          {"id": "a2", "text_en": "Multi-access software", "text_ar": "برمجيات متعددة الوصول", "is_correct": false},
+          {"id": "a3", "text_en": "Memory access software", "text_ar": "برمجيات الوصول إلى الذاكرة", "is_correct": false},
+          {"id": "a4", "text_en": "Mobile application", "text_ar": "تطبيق جوال", "is_correct": false}
+        ],
+        "correct_answer_id": "a1",
+        "explanation": "Malware stands for malicious software designed to harm systems.",
+        "explanation_ar": "'البرمجيات الخبيثة' هي برامج مصممة لإلحاق الضرر بالنظام."
+      },
+      {
+        "id": "q2",
+        "question_en": "Which of the following is a type of malware?",
+        "question_ar": "أي مما يلي نوع من البرمجيات الخبيثة؟",
+        "answers": [
+          {"id": "a1", "text_en": "Firewall", "text_ar": "جدار الحماية", "is_correct": false},
+          {"id": "a2", "text_en": "Antivirus", "text_ar": "مضاد الفيروسات", "is_correct": false},
+          {"id": "a3", "text_en": "Ransomware", "text_ar": "برمجيات الفدية", "is_correct": true},
+          {"id": "a4", "text_en": "Browser", "text_ar": "متصفح الإنترنت", "is_correct": false}
+        ],
+        "correct_answer_id": "a3",
+        "explanation": "Ransomware encrypts files and demands payment for decryption.",
+        "explanation_ar": "برمجيات الفدية تقوم بتشفير الملفات وتطالب بدفع مبلغ لفك التشفير."
+      },
+      {
+        "id": "q3",
+        "question_en": "How can malware enter your device?",
+        "question_ar": "كيف يمكن للبرمجيات الخبيثة الدخول إلى جهازك؟",
+        "answers": [
+          {"id": "a1", "text_en": "Opening suspicious email attachments", "text_ar": "فتح مرفقات بريد إلكتروني مشبوهة", "is_correct": true},
+          {"id": "a2", "text_en": "Using a strong password", "text_ar": "استخدام كلمة مرور قوية", "is_correct": false},
+          {"id": "a3", "text_en": "Updating your operating system", "text_ar": "تحديث نظام التشغيل", "is_correct": false},
+          {"id": "a4", "text_en": "Installing official apps from app stores", "text_ar": "تثبيت تطبيقات رسمية من المتاجر", "is_correct": false}
+        ],
+        "correct_answer_id": "a1",
+        "explanation": "Malware often spreads through phishing emails and malicious attachments.",
+        "explanation_ar": "غالبًا ما تنتشر البرمجيات الخبيثة عبر رسائل البريد الإلكتروني التصيدية والمرفقات الضارة."
+      },
+      {
+        "id": "q4",
+        "question_en": "Which of the following is NOT a way to protect against malware?",
+        "question_ar": "أي مما يلي ليس وسيلة للحماية من البرمجيات الخبيثة؟",
+        "answers": [
+          {"id": "a1", "text_en": "Using an antivirus", "text_ar": "استخدام مضاد الفيروسات", "is_correct": false},
+          {"id": "a2", "text_en": "Clicking on unknown links", "text_ar": "النقر على روابط غير معروفة", "is_correct": true},
+          {"id": "a3", "text_en": "Avoiding suspicious downloads", "text_ar": "تجنب التنزيلات المشبوهة", "is_correct": false},
+          {"id": "a4", "text_en": "Keeping software up to date", "text_ar": "الحفاظ على تحديث البرامج", "is_correct": false}
+        ],
+        "correct_answer_id": "a2",
+        "explanation": "Clicking on unknown links increases the risk of malware infection.",
+        "explanation_ar": "يزيد النقر على الروابط غير المعروفة من خطر الإصابة بالبرمجيات الخبيثة."
+      }
+    ]
+  },
+  {
+    "id": "quiz5",
+    "title_en": "Public Wi-Fi Safety Quiz",
+    "title_ar": "اختبار أمان شبكات الواي فاي العامة",
+    "questions": [
+      {
+        "id": "q1",
+        "question_en": "Why should you avoid logging into sensitive accounts on public Wi-Fi?",
+        "question_ar": "لماذا يجب تجنب تسجيل الدخول إلى الحسابات الحساسة عبر واي فاي عام؟",
+        "answers": [
+          {"id": "a1", "text_en": "It's slow", "text_ar": "إنها بطيئة", "is_correct": false},
+          {"id": "a2", "text_en": "Hackers can intercept your data", "text_ar": "يمكن للقراصنة اعتراض بياناتك", "is_correct": true},
+          {"id": "a3", "text_en": "It's expensive", "text_ar": "إنها مكلفة", "is_correct": false},
+          {"id": "a4", "text_en": "You might get banned", "text_ar": "قد يتم حظرك", "is_correct": false}
+        ],
+        "correct_answer_id": "a2",
+        "explanation": "Public Wi-Fi networks are vulnerable to man-in-the-middle attacks.",
+        "explanation_ar": "شبكات الواي فاي العامة معرضة لهجمات الوسيط."
+      },
+      {
+        "id": "q2",
+        "question_en": "Which of the following is a safe practice on public Wi-Fi?",
+        "question_ar": "أي مما يلي ممارسة آمنة على الواي فاي العام؟",
+        "answers": [
+          {"id": "a1", "text_en": "Using a virtual private network (VPN)", "text_ar": "استخدام شبكة افتراضية خاصة (VPN)", "is_correct": true},
+          {"id": "a2", "text_en": "Accessing your bank account", "text_ar": "الوصول إلى حسابك البنكي", "is_correct": false},
+          {"id": "a3", "text_en": "Using HTTP websites", "text_ar": "استخدام المواقع غير المشفرة (HTTP)", "is_correct": false},
+          {"id": "a4", "text_en": "Connecting automatically", "text_ar": "الاتصال تلقائيًا", "is_correct": false}
+        ],
+        "correct_answer_id": "a1",
+        "explanation": "Using a VPN encrypts your internet traffic on public networks.",
+        "explanation_ar": "استخدام شبكة افتراضية خاصة (VPN) يشفر حركة المرور على الشبكات العامة."
+      },
+      {
+        "id": "q3",
+        "question_en": "What is a man-in-the-middle attack?",
+        "question_ar": "ما هي هجوم الوسيط؟",
+        "answers": [
+          {"id": "a1", "text_en": "A firewall update", "text_ar": "تحديث جدار الحماية", "is_correct": false},
+          {"id": "a2", "text_en": "Data interception between two parties", "text_ar": "اعتراض البيانات بين طرفين", "is_correct": true},
+          {"id": "a3", "text_en": "Deleting files", "text_ar": "حذف الملفات", "is_correct": false},
+          {"id": "a4", "text_en": "Encrypting your files", "text_ar": "تشفير ملفاتك", "is_correct": false}
+        ],
+        "correct_answer_id": "a2",
+        "explanation": "MITM attacks involve a third party secretly intercepting communication.",
+        "explanation_ar": "تشمل هجمات الوسيط اعتراض الطرف الثالث للاتصالات دون علم الطرفين."
+      },
+      {
+        "id": "q4",
+        "question_en": "Which of the following is NOT a risk of using public Wi-Fi?",
+        "question_ar": "أي مما يلي ليس خطرًا لاستخدام الواي فاي العام؟",
+        "answers": [
+          {"id": "a1", "text_en": "Data theft", "text_ar": "سرقة البيانات", "is_correct": false},
+          {"id": "a2", "text_en": "Malware infection", "text_ar": "إصابة بالبرمجيات الخبيثة", "is_correct": false},
+          {"id": "a3", "text_en": "Improved network speed", "text_ar": "تحسين سرعة الشبكة", "is_correct": true},
+          {"id": "a4", "text_en": "Session hijacking", "text_ar": "اختطاف الجلسة", "is_correct": false}
+        ],
+        "correct_answer_id": "a3",
+        "explanation": "Improved network speed is not a security risk.",
+        "explanation_ar": "تحسين سرعة الشبكة ليس خطرًا أمنيًا."
+      }
+    ]
+  },
+  {
+    "id": "quiz6",
+    "title_en": "Social Engineering Awareness Quiz",
+    "title_ar": "اختبار الوعي بالهندسة الاجتماعية",
+    "questions": [
+      {
+        "id": "q1",
+        "question_en": "What is social engineering?",
+        "question_ar": "ما هي الهندسة الاجتماعية؟",
+        "answers": [
+          {"id": "a1", "text_en": "A type of malware", "text_ar": "نوع من البرمجيات الخبيثة", "is_correct": false},
+          {"id": "a2", "text_en": "Manipulating people to reveal confidential information", "text_ar": "التأثير على الأشخاص لكشف معلومات سرية", "is_correct": true},
+          {"id": "a3", "text_en": "Using strong passwords", "text_ar": "استخدام كلمات مرور قوية", "is_correct": false},
+          {"id": "a4", "text_en": "Updating your software", "text_ar": "تحديث البرامج", "is_correct": false}
+        ],
+        "correct_answer_id": "a2",
+        "explanation": "Social engineering exploits human psychology, not technical flaws.",
+        "explanation_ar": "تستغل الهندسة الاجتماعية ضعف الإنسان وليس الثغرات التقنية."
+      },
+      {
+        "id": "q2",
+        "question_en": "Which of the following is a common social engineering technique?",
+        "question_ar": "أي مما يلي تقنية شائعة في الهندسة الاجتماعية؟",
+        "answers": [
+          {"id": "a1", "text_en": "Phishing emails", "text_ar": "رسائل التصيد الإلكتروني", "is_correct": true},
+          {"id": "a2", "text_en": "Firewall configuration", "text_ar": "إعدادات جدار الحماية", "is_correct": false},
+          {"id": "a3", "text_en": "Using HTTPS websites", "text_ar": "استخدام المواقع المشفرة (HTTPS)", "is_correct": false},
+          {"id": "a4", "text_en": "Installing antivirus", "text_ar": "تثبيت مضاد الفيروسات", "is_correct": false}
+        ],
+        "correct_answer_id": "a1",
+        "explanation": "Phishing is a form of social engineering that tricks users into giving up sensitive data.",
+        "explanation_ar": "التصيد هو شكل من أشكال الهندسة الاجتماعية لخداع المستخدمين وسرقة بياناتهم."
+      },
+      {
+        "id": "q3",
+        "question_en": "What should you do if someone calls claiming to be from IT and asks for your password?",
+        "question_ar": "ماذا يجب أن تفعل إذا اتصل بك شخص يدعي أنه من قسم الدعم الفني ويطلب كلمة المرور؟",
+        "answers": [
+          {"id": "a1", "text_en": "Give them your password immediately", "text_ar": "أعطهم كلمة المرور فورًا", "is_correct": false},
+          {"id": "a2", "text_en": "Ask for their name and call back through official channels", "text_ar": "اطلب اسمه وتواصل معه عبر قنوات رسمية", "is_correct": true},
+          {"id": "a3", "text_en": "Send them an email with your password", "text_ar": "أرسل لهم بريدًا إلكترونيًا بكلمة المرور", "is_correct": false},
+          {"id": "a4", "text_en": "Ignore the call", "text_ar": "تجاهل المكالمة", "is_correct": false}
+        ],
+        "correct_answer_id": "a2",
+        "explanation": "Never share your password over the phone. Always verify the identity of the caller.",
+        "explanation_ar": "لا تشارك كلمة المرور عبر الهاتف. تحقق دائمًا من هوية المتصل."
+      },
+      {
+        "id": "q4",
+        "question_en": "Which of the following is NOT a sign of a social engineering attack?",
+        "question_ar": "أي مما يلي ليس علامة على هجوم هندسة اجتماعية؟",
+        "answers": [
+          {"id": "a1", "text_en": "Urgent requests for personal information", "text_ar": "طلبات عاجلة للمعلومات الشخصية", "is_correct": false},
+          {"id": "a2", "text_en": "Requests made in person by verified staff", "text_ar": "طلبات يقدمها موظفين معروفين وجهاً لوجه", "is_correct": true},
+          {"id": "a3", "text_en": "Unexpected email asking for login details", "text_ar": "بريد إلكتروني غير متوقع يطلب بيانات تسجيل الدخول", "is_correct": false},
+          {"id": "a4", "text_en": "Threats or intimidation tactics", "text_ar": "استخدام التهديد أو الإخافة", "is_correct": false}
+        ],
+        "correct_answer_id": "a2",
+        "explanation": "Verified in-person requests are legitimate and not part of social engineering.",
+        "explanation_ar": "الطلبات التي تُقدم وجهاً لوجه من موظفين معتمدين ليست هندسة اجتماعية."
+      }
+    ]
+  },
+  {
+    "id": "quiz7",
+    "title_en": "Email Security Quiz",
+    "title_ar": "اختبار أمان البريد الإلكتروني",
+    "questions": [
+      {
+        "id": "q1",
+        "question_en": "What is the best way to protect your email account from unauthorized access?",
+        "question_ar": "ما أفضل طريقة لحماية حساب البريد الإلكتروني من الوصول غير المصرح به؟",
+        "answers": [
+          {"id": "a1", "text_en": "Use a weak password", "text_ar": "استخدام كلمة مرور ضعيفة", "is_correct": false},
+          {"id": "a2", "text_en": "Enable two-factor authentication", "text_ar": "تفعيل المصادقة الثنائية", "is_correct": true},
+          {"id": "a3", "text_en": "Share your password with friends", "text_ar": "مشاركة كلمة المرور مع الأصدقاء", "is_correct": false},
+          {"id": "a4", "text_en": "Use public Wi-Fi to check email", "text_ar": "استخدام الواي فاي العام للتحقق من البريد الإلكتروني", "is_correct": false}
+        ],
+        "correct_answer_id": "a2",
+        "explanation": "Two-factor authentication adds an extra layer of security to your email account.",
+        "explanation_ar": "تضيف المصادقة الثنائية طبقة أمان إضافية لحساب البريد الإلكتروني."
+      },
+      {
+        "id": "q2",
+        "question_en": "Which of the following is a sign of a phishing email?",
+        "question_ar": "أي مما يلي علامة على رسالة بريد تصيدي؟",
+        "answers": [
+          {"id": "a1", "text_en": "Official company logo", "text_ar": "شعار الشركة الرسمي", "is_correct": false},
+          {"id": "a2", "text_en": "Generic greeting like 'Dear User'", "text_ar": "تحية عامة مثل 'السيد العميل'", "is_correct": true},
+          {"id": "a3", "text_en": "Clear sender address", "text_ar": "عنوان مرسل واضح", "is_correct": false},
+          {"id": "a4", "text_en": "Secure website link", "text_ar": "رابط موقع آمن", "is_correct": false}
+        ],
+        "correct_answer_id": "a2",
+        "explanation": "Phishing emails often use generic greetings instead of personalizing the message.",
+        "explanation_ar": "غالبًا ما تستخدم رسائل التصيد تحية عامة بدلاً من تخصيص الرسالة."
+      },
+      {
+        "id": "q3",
+        "question_en": "What should you do before clicking on a link in an email?",
+        "question_ar": "ماذا يجب أن تفعل قبل النقر على رابط في رسالة بريد إلكتروني؟",
+        "answers": [
+          {"id": "a1", "text_en": "Check the sender's email address", "text_ar": "التحقق من عنوان البريد الإلكتروني للمرسل", "is_correct": true},
+          {"id": "a2", "text_en": "Click it immediately", "text_ar": "انقر عليه فورًا", "is_correct": false},
+          {"id": "a3", "text_en": "Forward it to others", "text_ar": "إعادة توجيه الرسالة للآخرين", "is_correct": false},
+          {"id": "a4", "text_en": "Delete it without reading", "text_ar": "احذفها دون قراءتها", "is_correct": false}
+        ],
+        "correct_answer_id": "a1",
+        "explanation": "Always verify the sender’s email before clicking any links.",
+        "explanation_ar": "تحقق دائمًا من عنوان البريد الإلكتروني قبل النقر على أي روابط."
+      },
+      {
+        "id": "q4",
+        "question_en": "What does SPF stand for in email security?",
+        "question_ar": "ماذا تعني كلمة SPF في أمان البريد الإلكتروني؟",
+        "answers": [
+          {"id": "a1", "text_en": "Sender Policy Framework", "text_ar": "إطار سياسة المرسل", "is_correct": true},
+          {"id": "a2", "text_en": "Secure Password File", "text_ar": "ملف كلمة مرور آمن", "is_correct": false},
+          {"id": "a3", "text_en": "System Protection Framework", "text_ar": "إطار حماية النظام", "is_correct": false},
+          {"id": "a4", "text_en": "Spam Filtering Protocol", "text_ar": "بروتوكول تصفية البريد العشوائي", "is_correct": false}
+        ],
+        "correct_answer_id": "a1",
+        "explanation": "SPF helps prevent email spoofing by verifying the sender's IP address.",
+        "explanation_ar": "يساعد SPF في منع انتحال الهوية الإلكترونية من خلال التحقق من عنوان IP للمرسل."
+      }
+    ]
+  },
+  {
+    "id": "quiz8",
+    "title_en": "Device Security Quiz",
+    "title_ar": "اختبار أمان الأجهزة",
+    "questions": [
+      {
+        "id": "q1",
+        "question_en": "Why should you lock your device when not in use?",
+        "question_ar": "لماذا يجب قفل جهازك عند عدم استخدامه؟",
+        "answers": [
+          {"id": "a1", "text_en": "To save battery", "text_ar": "لحفظ الطاقة", "is_correct": false},
+          {"id": "a2", "text_en": "To prevent unauthorized access", "text_ar": "لمنع الوصول غير المصرح له", "is_correct": true},
+          {"id": "a3", "text_en": "To improve performance", "text_ar": "لتحسين الأداء", "is_correct": false},
+          {"id": "a4", "text_en": "To update the system", "text_ar": "لتحديث النظام", "is_correct": false}
+        ],
+        "correct_answer_id": "a2",
+        "explanation": "Locking your device protects your data from unauthorized users.",
+        "explanation_ar": "قفل الجهاز يحمي بياناتك من المستخدمين غير المصرح لهم."
+      },
+      {
+        "id": "q2",
+        "question_en": "What is the safest way to unlock your device?",
+        "question_ar": "ما أكثر طريقة أمانًا لفتح جهازك؟",
+        "answers": [
+          {"id": "a1", "text_en": "Using a simple 4-digit PIN", "text_ar": "استخدام رمز PIN مكون من 4 أرقام بسيطة", "is_correct": false},
+          {"id": "a2", "text_en": "Using biometric authentication", "text_ar": "استخدام المصادقة البيولوجية", "is_correct": true},
+          {"id": "a3", "text_en": "Leaving it unlocked", "text_ar": "تركه بدون قفل", "is_correct": false},
+          {"id": "a4", "text_en": "Using a pattern lock", "text_ar": "استخدام قفل نمطي", "is_correct": false}
+        ],
+        "correct_answer_id": "a2",
+        "explanation": "Biometric authentication like fingerprint or facial recognition is more secure than patterns or short PINs.",
+        "explanation_ar": "المصادقة البيولوجية مثل بصمة الإصبع أو التعرف على الوجه أكثر أمانًا من الأنماط أو الرموز القصيرة."
+      },
+      {
+        "id": "q3",
+        "question_en": "What should you do if you lose your smartphone?",
+        "question_ar": "ماذا يجب أن تفعل إذا فقدت هاتفك الذكي؟",
+        "answers": [
+          {"id": "a1", "text_en": "Do nothing", "text_ar": "لا تفعل شيئًا", "is_correct": false},
+          {"id": "a2", "text_en": "Remotely wipe your data", "text_ar": "امسح بياناتك عن بُعد", "is_correct": true},
+          {"id": "a3", "text_en": "Post about it publicly online", "text_ar": "انشر عن ذلك علنًا على الإنترنت", "is_correct": false},
+          {"id": "a4", "text_en": "Wait a few days", "text_ar": "انتظر عدة أيام", "is_correct": false}
+        ],
+        "correct_answer_id": "a2",
+        "explanation": "Remote wiping helps protect your data if your device is lost or stolen.",
+        "explanation_ar": "يمكنك حماية بياناتك عن طريق مسح البيانات عن بُعد إذا فقدت جهازك."
+      },
+      {
+        "id": "q4",
+        "question_en": "Which of the following is NOT a good device security practice?",
+        "question_ar": "أي مما يلي ليس ممارسة جيدة لأمان الأجهزة؟",
+        "answers": [
+          {"id": "a1", "text_en": "Keeping your OS updated", "text_ar": "الحفاظ على تحديث نظام التشغيل", "is_correct": false},
+          {"id": "a2", "text_en": "Sharing your device with friends without supervision", "text_ar": "مشاركة جهازك مع الأصدقاء دون إشراف", "is_correct": true},
+          {"id": "a3", "text_en": "Using a screen lock", "text_ar": "استخدام قفل الشاشة", "is_correct": false},
+          {"id": "a4", "text_en": "Installing trusted apps only", "text_ar": "تثبيت التطبيقات الموثوقة فقط", "is_correct": false}
+        ],
+        "correct_answer_id": "a2",
+        "explanation": "Allowing unsupervised access to your device can lead to data exposure.",
+        "explanation_ar": "قد يؤدي السماح للآخرين باستخدام جهازك دون إشراف إلى تسرب البيانات."
+      }
+    ]
+  },
+  {
+    "id": "quiz9",
+    "title_en": "Online Privacy Quiz",
+    "title_ar": "اختبار الخصوصية على الإنترنت",
+    "questions": [
+      {
+        "id": "q1",
+        "question_en": "What is private browsing mode intended for?",
+        "question_ar": "ما الغرض من وضع التصفح الخاص؟",
+        "answers": [
+          {"id": "a1", "text_en": "To make your browser faster", "text_ar": "لتوفير تصفح أسرع", "is_correct": false},
+          {"id": "a2", "text_en": "To prevent storing browsing history locally", "text_ar": "لمنع تخزين سجل التصفح محليًا", "is_correct": true},
+          {"id": "a3", "text_en": "To hide your activity from your ISP", "text_ar": "إخفاء نشاطك عن مزود خدمة الإنترنت", "is_correct": false},
+          {"id": "a4", "text_en": "To download files anonymously", "text_ar": "تنزيل ملفات بشكل مجهول", "is_correct": false}
+        ],
+        "correct_answer_id": "a2",
+        "explanation": "Private browsing prevents local storage of cookies and history but does not hide your activity from networks.",
+        "explanation_ar": "يمنع التصفح الخاص تخزين الكوكيز والتاريخ محليًا، لكنه لا يخفي نشاطك عن الشبكات."
+      },
+      {
+        "id": "q2",
+        "question_en": "What is a digital footprint?",
+        "question_ar": "ما هو البصمة الرقمية؟",
+        "answers": [
+          {"id": "a1", "text_en": "The physical size of your device", "text_ar": "الحجم المادي لجهازك", "is_correct": false},
+          {"id": "a2", "text_en": "All the data you leave behind when using the internet", "text_ar": "جميع البيانات التي تتركها وراءك عند استخدام الإنترنت", "is_correct": true},
+          {"id": "a3", "text_en": "The number of apps installed", "text_ar": "عدد التطبيقات المثبتة", "is_correct": false},
+          {"id": "a4", "text_en": "Your monthly internet usage", "text_ar": "استخدام الإنترنت الشهري", "is_correct": false}
+        ],
+        "correct_answer_id": "a2",
+        "explanation": "Everything you do online contributes to your digital footprint.",
+        "explanation_ar": "كل ما تفعله على الإنترنت يساهم في تكوين بصمتك الرقمية."
+      },
+      {
+        "id": "q3",
+        "question_en": "How can you reduce your digital footprint?",
+        "question_ar": "كيف يمكنك تقليل بصمتك الرقمية؟",
+        "answers": [
+          {"id": "a1", "text_en": "Log out of accounts when not in use", "text_ar": "تسجيل الخروج من الحسابات عند عدم استخدامها", "is_correct": true},
+          {"id": "a2", "text_en": "Use public forums frequently", "text_ar": "استخدام المنتديات العامة بشكل متكرر", "is_correct": false},
+          {"id": "a3", "text_en": "Store all your data in the cloud", "text_ar": "تخزين جميع بياناتك في السحابة", "is_correct": false},
+          {"id": "a4", "text_en": "Use default privacy settings", "text_ar": "استخدام إعدادات الخصوصية الافتراضية", "is_correct": false}
+        ],
+        "correct_answer_id": "a1",
+        "explanation": "Logging out reduces tracking and minimizes your online presence.",
+        "explanation_ar": "يساعد تسجيل الخروج في تقليل تتبع نشاطك والحد من ظهورك على الإنترنت."
+      },
+      {
+        "id": "q4",
+        "question_en": "Which of the following increases your digital footprint?",
+        "question_ar": "أي مما يلي يزيد من بصمتك الرقمية؟",
+        "answers": [
+          {"id": "a1", "text_en": "Deleting unused accounts", "text_ar": "حذف الحسابات غير المستخدمة", "is_correct": false},
+          {"id": "a2", "text_en": "Posting photos and comments on social media", "text_ar": "نشر الصور والتعليقات على مواقع التواصل الاجتماعي", "is_correct": true},
+          {"id": "a3", "text_en": "Using private browsing", "text_ar": "استخدام التصفح الخاص", "is_correct": false},
+          {"id": "a4", "text_en": "Managing app permissions", "text_ar": "إدارة أذونات التطبيقات", "is_correct": false}
+        ],
+        "correct_answer_id": "a2",
+        "explanation": "Every post and comment leaves a traceable record online.",
+        "explanation_ar": "كل منشور أو تعليق يترك سجلًا يمكن تتبعه على الإنترنت."
+      }
+    ]
+  },
+  {
+    "id": "quiz10",
+    "title_en": "Basic Cybersecurity Terminology Quiz",
+    "title_ar": "اختبار المصطلحات الأساسية في الأمن السيبراني",
+    "questions": [
+      {
+        "id": "q1",
+        "question_en": "What does 'phishing' refer to?",
+        "question_ar": "ماذا يشير مصطلح 'التصيد'؟",
+        "answers": [
+          {"id": "a1", "text_en": "A firewall update", "text_ar": "تحديث جدار الحماية", "is_correct": false},
+          {"id": "a2", "text_en": "Fraudulent attempts to obtain sensitive information", "text_ar": "محاولات احتيالية للحصول على معلومات حساسة", "is_correct": true},
+          {"id": "a3", "text_en": "Data encryption", "text_ar": "تشفير البيانات", "is_correct": false},
+          {"id": "a4", "text_en": "Malware removal", "text_ar": "إزالة البرمجيات الخبيثة", "is_correct": false}
+        ],
+        "correct_answer_id": "a2",
+        "explanation": "Phishing involves deceptive messages to steal usernames, passwords, and other data.",
+        "explanation_ar": "يشير التصيد إلى الرسائل الاحتيالية لسرقة أسماء المستخدمين وكلمات المرور وغيرها من البيانات."
+      },
+      {
+        "id": "q2",
+        "question_en": "What is ransomware?",
+        "question_ar": "ما هي برمجيات الفدية؟",
+        "answers": [
+          {"id": "a1", "text_en": "Software that blocks spam", "text_ar": "برنامج يحجب البريد العشوائي", "is_correct": false},
+          {"id": "a2", "text_en": "Malware that encrypts your files and demands payment", "text_ar": "برمجية خبيثة تشفير ملفاتك وتطالب بدفع مبلغ", "is_correct": true},
+          {"id": "a3", "text_en": "A firewall program", "text_ar": "برنامج جدار الحماية", "is_correct": false},
+          {"id": "a4", "text_en": "A secure browser", "text_ar": "متصفح آمن", "is_correct": false}
+        ],
+        "correct_answer_id": "a2",
+        "explanation": "Ransomware locks your files until you pay a ransom, usually in cryptocurrency.",
+        "explanation_ar": "برمجيات الفدية تُحبس ملفاتك حتى تقوم بدفع فدية، غالبًا باستخدام العملات الرقمية."
+      },
+      {
+        "id": "q3",
+        "question_en": "What is a firewall?",
+        "question_ar": "ما هو جدار الحماية؟",
+        "answers": [
+          {"id": "a1", "text_en": "A hardware device that stores data", "text_ar": "جهاز مادي لتخزين البيانات", "is_correct": false},
+          {"id": "a2", "text_en": "A network security system that monitors traffic", "text_ar": "نظام أمان شبكي يراقب حركة المرور", "is_correct": true},
+          {"id": "a3", "text_en": "A type of malware", "text_ar": "نوع من البرمجيات الخبيثة", "is_correct": false},
+          {"id": "a4", "text_en": "An email filtering service", "text_ar": "خدمة تصفية البريد الإلكتروني", "is_correct": false}
+        ],
+        "correct_answer_id": "a2",
+        "explanation": "Firewalls block unauthorized access while allowing legitimate traffic.",
+        "explanation_ar": "تمنع جدران الحماية الوصول غير المصرح له بينما تسمح بحركة المرور المشروعة."
+      },
+      {
+        "id": "q4",
+        "question_en": "What is encryption?",
+        "question_ar": "ما هو التشفير؟",
+        "answers": [
+          {"id": "a1", "text_en": "Making data readable to everyone", "text_ar": "جعل البيانات قابلة للقراءة للجميع", "is_correct": false},
+          {"id": "a2", "text_en": "Converting data into a coded format", "text_ar": "تحويل البيانات إلى تنسيق مشفر", "is_correct": true},
+          {"id": "a3", "text_en": "Deleting files permanently", "text_ar": "حذف الملفات بشكل دائم", "is_correct": false},
+          {"id": "a4", "text_en": "Backing up data", "text_ar": "عمل نسخة احتياطية من البيانات", "is_correct": false}
+        ],
+        "correct_answer_id": "a2",
+        "explanation": "Encryption protects data by making it unreadable without a decryption key.",
+        "explanation_ar": "يحمي التشفير البيانات بجعلها غير قابلة للقراءة دون مفتاح فك التشفير."
+      }
+    ]
+  }
+]

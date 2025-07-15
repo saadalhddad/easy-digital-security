@@ -8,9 +8,10 @@ plugins {
 android {
     namespace = "com.example.easy_digital_security"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    ndkVersion = "27.0.12077973"
 
     compileOptions {
+        isCoreLibraryDesugaringEnabled = true  // هذا صحيح لـ .kts// <--- حافظ على هذا وأضف 'true'
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
@@ -37,6 +38,16 @@ android {
             signingConfig = signingConfigs.getByName("debug")
         }
     }
+}
+
+dependencies {
+    // تأكد من وجود هذا السطر إذا كنت تستخدم Kotlin
+    implementation(kotlin("stdlib-jdk8")) // أو kotlin("stdlib-jdk7") أو ما شابه حسب مشروعك
+
+    // **هذا هو السطر الأساسي لحل الخطأ الحالي**
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.4")
+
+    // ... أي تبعيات أخرى لمشروعك (مثل مكتبات Flutter أو تبعيات Firebase، إلخ)
 }
 
 flutter {
